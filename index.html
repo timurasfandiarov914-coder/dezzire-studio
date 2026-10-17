@@ -425,14 +425,14 @@ html,body{overflow-x:hidden}
 }
 
 
-/* MOBILE UX FIXES: catalog, FAQ, metadata, navigation, proof note */
+/* MOBILE UX FIXES: stable beat cards, FAQ, navigation, proof note */
 @media (max-width: 768px) {
-  /* Catalog: full-width cards and covers, no half-empty final column */
+  /* Catalog: single column, with each card's content in its own rows */
   .beats {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
     align-items: stretch;
-    gap: 0;
+    gap: 14px;
     width: 100%;
   }
   .beats > .beat {
@@ -444,51 +444,89 @@ html,body{overflow-x:hidden}
   }
   .beats > .beat > .cover {
     width: 100%;
-    height: auto;
     min-width: 0;
+    height: auto;
     aspect-ratio: 1.25 / 1;
-    align-self: stretch;
   }
   .beats > .beat > .beat-body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
-    column-gap: 12px;
-    row-gap: 0;
+    gap: 0;
+    width: 100%;
     min-width: 0;
+    box-sizing: border-box;
     padding: 16px;
   }
-  .beats > .beat .beat-title h3 {
-    grid-column: 1;
-    grid-row: 1;
+  .beats > .beat .beat-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
     min-width: 0;
-    font-size: clamp(20px, 5.5vw, 28px);
+    width: 100%;
+  }
+  .beats > .beat .beat-title h3 {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.1;
     overflow-wrap: anywhere;
   }
   .beats > .beat .beat-title .price {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    display: block;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
     margin-top: 12px;
+    text-align: left;
     white-space: normal;
-    font-size: 10px;
-    color: #c5c5bd !important;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #444444 !important;
   }
   .beats > .beat .details {
-    grid-column: 1 / -1;
-    grid-row: 3;
+    display: block;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
     margin-top: 8px;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.5;
-    color: #c5c5bd !important;
-  }
-  .beats > .beat .player-progress {
-    grid-column: 1 / -1;
+    color: #444444 !important;
+    overflow-wrap: anywhere;
   }
   .beats > .beat .beat-foot {
-    grid-column: 1 / -1;
+    display: flex;
+    grid-column: auto;
+    grid-row: auto;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+  }
+  .beats > .beat .beat-foot .listen {
+    display: inline-flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 12px 10px;
+    white-space: nowrap;
+    line-height: 1.2;
   }
 
-  /* FAQ: keep questions readable without creating a wall of text */
+  /* FAQ: readable questions, preserving the mobile scale */
   .faq-list summary {
     font-size: clamp(20px, 3.2vw, 24px);
     line-height: 1.2;
@@ -502,7 +540,7 @@ html,body{overflow-x:hidden}
     flex: 0 0 auto;
   }
 
-  /* Header: reliable touch targets on narrow phones */
+  /* Header: comfortable tap targets on narrow phones */
   .nav {
     gap: 2px;
     font-size: 9px;
@@ -516,22 +554,21 @@ html,body{overflow-x:hidden}
     padding: 12px 14px;
   }
   .lang-switch {
-    min-width: 44px;
-    min-height: 44px;
-    padding: 12px 14px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 14px;
   }
 
-  /* Built for artists: stronger contrast on the current dark theme */
+  /* Built for artists: readable size and stronger contrast */
   .proof-note {
     font-size: 14px;
     line-height: 1.6;
-    color: #c5c5bd !important;
+    color: #444444 !important;
   }
 }
-
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
