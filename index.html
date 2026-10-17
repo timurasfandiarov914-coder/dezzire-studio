@@ -697,6 +697,65 @@ html,body{overflow-x:hidden}
 }
 @media(prefers-reduced-motion:reduce){.genre-track{animation:none;transform:none}}
 
+
+/* BEAT COVER ART DIRECTION */
+.cover.artwork{
+ width:100%!important;height:auto!important;aspect-ratio:1.38/1!important;align-self:stretch!important;
+ position:relative;isolation:isolate;overflow:hidden;border:1px solid #393939!important;
+ background:#d8ff35!important;color:#111!important;
+ display:flex!important;align-items:center;justify-content:center;
+}
+.cover.artwork:before{
+ content:"";position:absolute;inset:0;z-index:-1;opacity:.72;
+ background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(0,0,0,.18) 50%,transparent calc(50% + .5px)),
+ linear-gradient(0deg,transparent calc(50% - .5px),rgba(0,0,0,.18) 50%,transparent calc(50% + .5px)),
+ repeating-linear-gradient(0deg,transparent 0 23px,rgba(0,0,0,.07) 24px),
+ repeating-linear-gradient(90deg,transparent 0 23px,rgba(0,0,0,.07) 24px)!important;
+}
+.cover.artwork:after{
+ content:"";position:absolute;z-index:-1;width:58%;aspect-ratio:1;border:1px solid currentColor;border-radius:50%;
+ box-shadow:0 0 0 12px rgba(0,0,0,.035),0 0 0 28px rgba(0,0,0,.025),0 0 0 46px rgba(0,0,0,.02);
+ transform:rotate(-18deg);transition:transform .5s ease,width .5s ease;
+}
+.beat:hover .cover.artwork:after{transform:rotate(12deg) scale(1.08);width:63%}
+.cover.artwork .cover-meta,.cover.artwork .cover-coordinates{
+ position:absolute;z-index:2;font:7px var(--mono);letter-spacing:1px;text-transform:uppercase;
+}
+.cover.artwork .cover-meta{left:12px;top:11px}
+.cover.artwork .cover-meta i{font-style:normal;opacity:.45;padding:0 3px}
+.cover.artwork .cover-coordinates{right:12px;top:12px;writing-mode:vertical-rl;opacity:.65}
+.cover.artwork .serial,.cover.artwork .genre{
+ position:absolute;z-index:2;background:transparent!important;color:inherit!important;border:1px solid currentColor!important;
+ border-radius:0!important;padding:6px 7px!important;font:7px var(--mono)!important;letter-spacing:.7px;
+}
+.cover.artwork .serial{left:12px;top:auto;bottom:12px}
+.cover.artwork .genre{right:12px;bottom:12px}
+.cover.artwork .glyph{
+ position:relative;z-index:1;font-family:Arial,sans-serif!important;font-size:clamp(62px,8vw,116px)!important;
+ line-height:.8!important;letter-spacing:-.13em!important;font-weight:900!important;
+ text-shadow:3px 3px 0 rgba(0,0,0,.07);transform:rotate(-7deg);transition:transform .35s ease;
+}
+.beat:hover .cover.artwork .glyph{transform:rotate(0) scale(1.06)}
+.cover.artwork.lime{background:#d8ff35!important;color:#111!important}
+.cover.artwork.black{background:#171717!important;color:#f4f2e9!important;border-color:#444!important}
+.cover.artwork.black:after{box-shadow:0 0 0 12px rgba(255,255,255,.035),0 0 0 28px rgba(255,255,255,.025),0 0 0 46px rgba(255,255,255,.02)}
+.cover.artwork.pink{background:#e6a6bd!important;color:#171017!important}
+.cover.artwork.blue{background:#a9c5ff!important;color:#111!important}
+.cover.artwork.white{background:#e9e8e1!important;color:#111!important}
+@media(max-width:760px){
+ .cover.artwork{aspect-ratio:1.22/1!important}
+ .cover.artwork .glyph{font-size:clamp(62px,14vw,100px)!important}
+ .cover.artwork .cover-meta{left:9px;top:9px;font-size:6px}
+ .cover.artwork .cover-coordinates{right:8px;top:9px;font-size:6px}
+ .cover.artwork .serial{left:9px;bottom:9px}.cover.artwork .genre{right:9px;bottom:9px;font-size:6px!important}
+}
+@media(max-width:390px){
+ .cover.artwork .glyph{font-size:clamp(54px,18vw,78px)!important}
+ .cover.artwork .cover-coordinates{display:none}
+ .cover.artwork .cover-meta{font-size:5px}
+ .cover.artwork .serial,.cover.artwork .genre{padding:5px!important;font-size:6px!important}
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav></header>
@@ -723,7 +782,7 @@ const beats=[
 {title:"MDM",genre:"OTHER",bpm:155,price:"ASK",symbol:"MDM",index:"004",style:"blue",audio:"MDM 155 DEZZ1RE.mp3"},
 {title:"MED",genre:"OTHER",bpm:142,price:"ASK",symbol:"MED",index:"005",style:"white",audio:"MED 142 DEZZ1RE.mp3"}];
 let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
-function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover '+b.style+'"><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; ПРЕВЬЮ':'▶ &nbsp; PREVIEW')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
+function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork '+b.style+'"><span class="cover-meta">DEZZ1RE STUDIO <i> / </i> 2026</span><span class="cover-orbit" aria-hidden="true"></span><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span><span class="genre">UNDERGROUND AUDIO</span><span class="cover-coordinates">52°31' + "'" + 'N / 13°24' + "'" + 'E</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; ПРЕВЬЮ':'▶ &nbsp; PREVIEW')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
 let activeAudio=null,activeButton=null;
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 function formatTime(seconds){if(!Number.isFinite(seconds)||seconds<0)return'0:00';const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return m+':'+String(s).padStart(2,'0')}
