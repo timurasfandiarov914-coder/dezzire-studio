@@ -664,11 +664,44 @@ html,body{overflow-x:hidden}
   .hero-main h1{font-size:clamp(52px,15.5vw,68px)}
 }
 
+
+/* KINETIC TYPOGRAPHY HERO */
+.hero-clean.kinetic-hero{background:#fff!important;color:#111!important;border-bottom:0!important;padding:0 clamp(18px,4vw,64px)!important;overflow:hidden}
+.kinetic-hero .hero-clean-inner{max-width:1312px;padding:clamp(38px,6vw,76px) 0 0!important}
+.kinetic-hero .hero-main{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:clamp(20px,4vw,64px)!important;align-items:center!important;padding:clamp(40px,7vw,96px) 0 clamp(48px,7vw,92px)!important;min-width:0}
+.kinetic-hero .hero-main h1{font-size:clamp(64px,10.5vw,156px)!important;font-weight:900!important;letter-spacing:-.105em!important;line-height:.78!important;white-space:nowrap!important;color:#111!important}
+.kinetic-hero .hero-period{color:#111!important}
+.kinetic-hero .hero-motion{min-width:0;width:100%;overflow:hidden}
+.genre-marquee{width:100%;overflow:hidden;white-space:nowrap;color:#111;background:#fff}
+.genre-track{display:flex;width:max-content;will-change:transform;animation:genre-scroll 27s linear infinite}
+.genre-group{display:flex;align-items:center;flex:0 0 auto;gap:.22em;padding-right:.22em;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:clamp(36px,5.2vw,76px);font-weight:900;line-height:.92;letter-spacing:-.075em}
+.genre-group span{font-size:.78em;padding:0 .12em}
+@keyframes genre-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.kinetic-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;width:max-content;min-width:190px;margin-top:30px;padding:16px 19px;background:#111;color:#fff;border:1px solid #111;border-radius:0;font:10px var(--mono);letter-spacing:.8px;transition:background .2s,color .2s}
+.kinetic-cta:hover{background:#fff;color:#111}
+.kinetic-cta span{font-size:16px}
+.kinetic-hero .hero-bottom-clean{width:100%;padding:14px 0 17px!important;border-top:1px solid #111!important;justify-content:flex-start!important;color:#111!important;font:9px var(--mono)!important;letter-spacing:1px!important}
+@media(max-width:760px){
+ .hero-clean.kinetic-hero{padding:0 16px!important}
+ .kinetic-hero .hero-clean-inner{padding-top:32px!important}
+ .kinetic-hero .hero-main{grid-template-columns:minmax(0,1fr)!important;gap:34px!important;padding:clamp(45px,12vw,78px) 0 42px!important}
+ .kinetic-hero .hero-main h1{font-size:clamp(66px,16.5vw,112px)!important;text-align:center;letter-spacing:-.1em!important}
+ .kinetic-hero .hero-motion{width:100%;max-width:100%}
+ .genre-group{font-size:clamp(38px,9vw,58px)}
+ .kinetic-cta{margin-top:24px;min-height:48px}
+}
+@media(max-width:390px){
+ .hero-clean.kinetic-hero{padding:0 12px!important}
+ .kinetic-hero .hero-main h1{font-size:clamp(56px,15.8vw,68px)!important}
+ .genre-group{font-size:36px}
+}
+@media(prefers-reduced-motion:reduce){.genre-track{animation:none;transform:none}}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav></header>
 <main id="top">
-<section class="hero-clean"><div class="hero-clean-inner"><div class="hero-kicker"><span class="status-dot"></span><span data-i="eyebrow">Independent producer / original beats</span></div><div class="hero-main"><h1>DEZZ1RE<span class="hero-period">.</span></h1><div class="hero-side"><p class="intro" data-i="intro">Original Trap, Drill and Hip-Hop beats, instrumentals and custom beats for artists. Browse the catalog and find a sound for your next release.</p><a class="hero-link" href="#beats"><span data-i="find">BROWSE BEATS</span><span class="hero-link-arrow">↘</span></a></div></div><div class="hero-bottom-clean"><span data-i="norules">ORIGINAL BEATS<br>UPDATED REGULARLY</span><span class="hero-index">INDEPENDENT SOUND&nbsp; / &nbsp;2026</span></div></div></section>
+<section class="hero-clean kinetic-hero" aria-label="DEZZ1RE beat catalog"><div class="hero-clean-inner"><div class="hero-main"><h1>DEZZ1RE<span class="hero-period">.</span></h1><div class="hero-motion"><div class="genre-marquee" aria-label="Trap, Drill, Rage, Sigilkore, Phonk, Experimental, Boom Bap, Hyperpop, Plugg, Afrobeats"><div class="genre-track"><div class="genre-group">TRAP <span>•</span> DRILL <span>•</span> RAGE <span>•</span> SIGILKORE <span>•</span> PHONK <span>•</span> EXPERIMENTAL <span>•</span> BOOM BAP <span>•</span> HYPERPOP <span>•</span> PLUGG <span>•</span> AFROBEATS <span>•</span></div><div class="genre-group" aria-hidden="true">TRAP <span>•</span> DRILL <span>•</span> RAGE <span>•</span> SIGILKORE <span>•</span> PHONK <span>•</span> EXPERIMENTAL <span>•</span> BOOM BAP <span>•</span> HYPERPOP <span>•</span> PLUGG <span>•</span> AFROBEATS <span>•</span></div></div></div><a class="kinetic-cta" href="#beats">ENTER CATALOG <span>↘</span></a></div></div><div class="hero-bottom-clean"><span>EST. 2026 / BERLIN</span></div></div></section>
 <section class="shell section" id="beats"><div class="section-top"><h2><span data-i="latest">The</span><br><span data-i="productions">catalog</span><span style="color:#93ad00">.</span></h2><p data-i="vol">VOL. 001<br>SELECTED BEATS / 2026</p></div><div class="filters"><input class="field search" id="search" type="search" placeholder="SEARCH THE CATALOG..." aria-label="Search beats"><select class="field" id="sort" aria-label="Sort beats"><option value="newest" data-newest>NEWEST FIRST</option><option value="bpm" data-bpm>BPM: LOW TO HIGH</option></select></div><div class="beats" id="catalog"></div></section>
 <section class="manifesto" id="about"><div class="shell manifesto-inner"><h2><span data-i="madefor">Made for</span><br><span data-i="outsiders">the rare.</span></h2><p><span data-i="manifesto">Independent producer making original beats and instrumentals. For placements, custom beats and collaborations, get in touch.</span><br><br><span class="micro" data-i="keep">DEZZ1RE STUDIO® / ORIGINAL BEATS.</span></p></div></section>
 <section class="shell section proof" id="proof"><div class="section-top"><h2><span data-i="builtFor">Built for</span><br><span data-i="artists">artists.</span></h2><p data-i="proofLabel">INDEPENDENT SOUND<br>DIRECT COLLABORATION</p></div><div class="proof-grid"><div><strong>01</strong><span data-i="proof01">ORIGINAL PRODUCTION</span></div><div><strong>02</strong><span data-i="proof02">BEAT LICENSING</span></div><div><strong>03</strong><span data-i="proof03">CUSTOM BEATS</span></div><div><strong>04</strong><span data-i="proof04">DIRECT CONTACT</span></div></div><p class="proof-note" data-i="proofNote">Direct collaboration without intermediaries.</p></section>
