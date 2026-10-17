@@ -1194,6 +1194,45 @@ html[data-theme="light"] .blackout-marquee{background:#050505!important;color:#e
 /* Keep compact catalog titles compact on narrow screens despite legacy mobile rules. */
 @media(max-width:430px){#beats .beat:nth-child(n+4):nth-child(-n+9) .cover.artwork .cover-title{font-size:clamp(17px,5vw,26px)!important;top:9%!important;letter-spacing:-.045em!important}}
 @media(min-width:431px) and (max-width:700px){#beats .beat:nth-child(n+4):nth-child(-n+9) .cover.artwork .cover-title{font-size:clamp(14px,2.5vw,19px)!important;top:9%!important;letter-spacing:-.045em!important}}
+
+/* Mobile layout and legibility fixes (2026-10) */
+@media (max-width:700px){
+  /* Keep every beat card in the two-column mobile grid. */
+  #beats .beats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;align-items:start!important}
+  #beats .beat:nth-child(-n+3){grid-column:auto!important}
+
+  /* Use a title size that fits short and long names, including PACIFIC. */
+  #beats .cover.artwork .cover-title{font-size:clamp(14px,4.7vw,20px)!important;top:10%!important;left:4%!important;right:4%!important;letter-spacing:-.055em!important;line-height:1!important}
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .cover.artwork .cover-title{font-size:clamp(14px,4.7vw,20px)!important;top:10%!important;letter-spacing:-.055em!important}
+
+  /* Do not strip the price and details from the compact cards on mobile. */
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .beat-title{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:5px!important}
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .beat-title .price{display:inline-block!important;max-width:48%!important;font-size:clamp(7px,2vw,9px)!important;white-space:nowrap!important}
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .details{display:block!important;font-size:7px!important;letter-spacing:.25px!important}
+  #beats .beat-body{padding:9px!important;gap:7px 6px!important}
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .beat-body{padding:9px!important;gap:7px 6px!important}
+  #beats .beat-title .price{font-size:clamp(7px,2vw,9px)!important;letter-spacing:0!important}
+  #beats .details{font-size:7px!important;letter-spacing:.25px!important}
+  #beats .cover.artwork .cover-bpm{font-size:8px!important;left:8px!important;bottom:8px!important}
+
+  /* Make listen/buy controls easier to tap while preserving the compact design. */
+  #beats .beat-foot{display:flex!important;grid-column:1/-1!important;grid-row:3!important;gap:5px!important;margin-top:4px!important;padding-top:7px!important;justify-content:space-between!important}
+  #beats .beat-foot .listen{flex:1 1 0!important;min-width:0!important;min-height:32px!important;padding:8px 2px!important;font-size:7px!important;letter-spacing:0!important;text-align:center!important}
+  #beats .filters .field{min-height:40px!important;font-size:9px!important}
+  #beats .filters{gap:8px!important;margin-bottom:14px!important}
+
+  /* Tighten the transition from FAQ to contact without removing breathing room. */
+  #faq.section{padding-bottom:30px!important}
+  #contact.contact{padding-top:42px!important}
+  #contact .contact-row{padding-bottom:30px!important;gap:22px!important}
+  #faq .faq-list summary{font-size:clamp(20px,5.8vw,25px)!important;line-height:1.15!important}
+}
+@media (max-width:360px){
+  #beats .beat-title .price{font-size:7px!important}
+  #beats .beat:nth-child(n+4):nth-child(-n+9) .beat-title .price{font-size:7px!important}
+  #beats .beat-foot .listen{font-size:6.5px!important}
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
