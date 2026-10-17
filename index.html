@@ -1190,6 +1190,10 @@ html[data-theme="light"] .blackout-marquee{background:#050505!important;color:#e
 #beats .beat:hover .cover-object-art{transform:scale(1.035)!important}
 @media(max-width:700px){#beats .cover.artwork .cover-object-art{inset:0!important}}
 
+
+/* Keep compact catalog titles compact on narrow screens despite legacy mobile rules. */
+@media(max-width:430px){#beats .beat:nth-child(n+4):nth-child(-n+9) .cover.artwork .cover-title{font-size:clamp(17px,5vw,26px)!important;top:9%!important;letter-spacing:-.045em!important}}
+@media(min-width:431px) and (max-width:700px){#beats .beat:nth-child(n+4):nth-child(-n+9) .cover.artwork .cover-title{font-size:clamp(14px,2.5vw,19px)!important;top:9%!important;letter-spacing:-.045em!important}}
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
