@@ -1014,6 +1014,76 @@ html[data-theme="dark"] body #beats .beat-foot .listen.inquiry:hover{
   -webkit-text-fill-color:#000!important;
 }
 
+
+/* BLACKOUT REDESIGN: chrome 3D covers + unified industrial storefront */
+:root{--paper:#050505;--ink:#f4f4f4;--muted:#929292;--line:#303030;--acid:#f4f4f4}
+html[data-theme="light"]{color-scheme:dark;--paper:#050505;--ink:#f4f4f4;--muted:#929292;--line:#303030}
+html[data-theme="light"] body,html[data-theme="dark"] body{background:#050505!important;color:#f4f4f4!important}
+body{background:#050505!important;color:#f4f4f4!important}
+.shell{max-width:1500px}
+.top{border-color:#303030!important}
+.logo,.nav a,.section h2,.contact h2,.beat-title h3{color:#f4f4f4!important}
+.nav a{letter-spacing:1.2px;text-transform:uppercase}
+.theme-switch,.lang-switch{border-radius:0;border-color:#4a4a4a;color:#f4f4f4;background:#080808}
+.hero-clean.kinetic-hero{background:#050505!important;border-bottom:1px solid #303030!important}
+.hero-clean .hero-main h1{color:#f4f4f4!important;text-shadow:0 0 1px #fff}
+.hero-clean .hero-period{color:#f4f4f4!important}
+.genre-marquee{background:#000!important;color:#f4f4f4!important;border-color:#303030!important}
+.genre-marquee .genre-group,.genre-marquee .genre-group span{color:#f4f4f4!important}
+.kinetic-cta{border-radius:0!important;background:#f4f4f4!important;color:#050505!important;border:1px solid #f4f4f4!important}
+.floating-face-zone{background:#050505!important;border:0!important}
+.floating-face{color:#f4f4f4!important}
+#beats .section-top h2{color:#f4f4f4!important}
+#beats .section-top h2 span[style]{color:#777!important}
+.filters{border-top:1px solid #303030!important;border-bottom:1px solid #303030!important}
+.filters .field{background:#080808!important;color:#f4f4f4!important;border:0!important;border-right:1px solid #303030!important;border-radius:0!important}
+.filters .field::placeholder{color:#8b8b8b!important}
+.beats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;border:0!important}
+.beat{display:block!important;background:#080808!important;border:1px solid #303030!important;min-width:0!important;transition:border-color .25s,transform .25s!important}
+.beat:hover{background:#0d0d0d!important;border-color:#777!important;transform:translateY(-3px)!important}
+.cover.artwork{width:100%!important;height:auto!important;aspect-ratio:1/1!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;gap:0!important;position:relative!important;overflow:hidden!important;isolation:isolate!important;background:#050505!important;color:#f4f4f4!important;border:0!important;border-bottom:1px solid #303030!important}
+.cover.artwork:before{content:""!important;position:absolute!important;inset:0!important;z-index:-2!important;opacity:1!important;background:radial-gradient(ellipse at 50% 55%,rgba(var(--accent-rgb),.14),transparent 58%),linear-gradient(90deg,transparent 49.8%,rgba(255,255,255,.07) 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,rgba(255,255,255,.07) 50%,transparent 50.2%),repeating-linear-gradient(0deg,transparent 0 34px,rgba(255,255,255,.025) 35px)!important}
+.cover.artwork:after{content:""!important;position:absolute!important;z-index:-1!important;left:20%!important;top:30%!important;width:60%!important;aspect-ratio:1!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:50%!important;box-shadow:0 0 0 12px rgba(255,255,255,.025),0 0 0 28px rgba(255,255,255,.018)!important;transform:rotate(-18deg)!important}
+.cover.artwork .cover-meta{position:relative!important;inset:auto!important;display:block!important;text-align:center!important;padding:17px 8px 0!important;background:none!important;color:#bdbdbd!important;font:8px var(--mono)!important;letter-spacing:2px!important;border:0!important}
+.cover.artwork .cover-title{position:relative!important;z-index:3!important;display:block!important;margin:13px 7px 0!important;text-align:center!important;color:#f7f7f7!important;font:900 clamp(25px,3.5vw,53px)/.9 Arial,sans-serif!important;letter-spacing:-.075em!important;text-transform:uppercase!important;white-space:nowrap!important;text-shadow:0 1px 0 #fff,0 2px 0 #aaa,0 3px 0 #666,0 5px 8px rgba(0,0,0,.9)!important}
+.cover.artwork .glyph,.cover.artwork .serial,.cover.artwork .genre,.cover.artwork .cover-coordinates{display:none!important}
+.cover-object{position:absolute!important;left:50%!important;top:59%!important;width:49%!important;aspect-ratio:1!important;transform:translate(-50%,-50%) rotate(-12deg)!important;filter:drop-shadow(0 14px 13px rgba(0,0,0,.8))!important;transition:transform .45s ease!important}
+.cover-object i{position:absolute!important;display:block!important;inset:7%!important;border:clamp(2px,.35vw,5px) solid #f4f4f4!important;border-radius:36% 64% 57% 43% / 44% 35% 65% 56%!important;background:linear-gradient(135deg,rgba(255,255,255,.95) 0%,#8b8b8b 12%,#151515 28%,#d9d9d9 43%,#333 53%,#fafafa 67%,#3a3a3a 80%,#f7f7f7 100%)!important;box-shadow:inset 0 0 13px #000,0 0 7px rgba(var(--accent-rgb),.55)!important}
+.cover-object i:nth-child(2){transform:rotate(58deg) scale(.82)!important;border-radius:60% 40% 48% 52% / 35% 58% 42% 65%!important;opacity:.94!important}
+.cover-object i:nth-child(3){transform:rotate(-55deg) scale(.63)!important;border-radius:43% 57% 32% 68% / 56% 38% 62% 44%!important;opacity:.9!important}
+.cover-bpm{position:absolute!important;left:15px!important;bottom:14px!important;color:#f4f4f4!important;font:9px var(--mono)!important;letter-spacing:1.2px!important}
+.cover-serial{position:absolute!important;right:15px!important;bottom:14px!important;color:#888!important;font:8px var(--mono)!important;letter-spacing:1px!important}
+.beat:hover .cover-object{transform:translate(-50%,-50%) rotate(5deg) scale(1.06)!important}
+.cover.artwork.accent-001,.cover.artwork.accent-007,.cover.artwork.accent-011{--accent-rgb:255,35,48}
+.cover.artwork.accent-002,.cover.artwork.accent-010,.cover.artwork.accent-015{--accent-rgb:200,200,210}
+.cover.artwork.accent-003,.cover.artwork.accent-013,.cover.artwork.accent-017{--accent-rgb:255,35,130}
+.cover.artwork.accent-004,.cover.artwork.accent-008,.cover.artwork.accent-012,.cover.artwork.accent-018{--accent-rgb:30,105,255}
+.cover.artwork.accent-005,.cover.artwork.accent-009,.cover.artwork.accent-014{--accent-rgb:180,180,180}
+.cover.artwork.accent-006,.cover.artwork.accent-016{--accent-rgb:190,40,255}
+.beat-body{padding:18px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:auto auto auto!important;gap:8px 12px!important;align-items:center!important}
+.beat-title{display:flex!important;grid-column:1/-1!important;grid-row:1!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+.beat-title h3{font-size:clamp(22px,2.5vw,32px)!important;letter-spacing:-1px!important}
+.beat-title .price{color:#bcbcbc!important;font:9px var(--mono)!important}
+.details{grid-column:1!important;grid-row:2!important;margin:0!important;color:#999!important;font:9px var(--mono)!important;letter-spacing:1px!important}
+.player-progress{grid-column:1/-1!important;grid-row:3!important;display:none!important}
+.beat-foot{grid-column:2!important;grid-row:2!important;display:flex!important;gap:16px!important;justify-content:flex-end!important;border:0!important;margin:0!important;padding:0!important}
+.listen{color:#f4f4f4!important;font:9px var(--mono)!important;letter-spacing:.7px!important}
+.listen:hover{opacity:.65!important}
+.empty{border:1px solid #303030!important;border-radius:0!important}
+.manifesto{background:#0a0a0a!important;color:#f4f4f4!important;border-top:1px solid #303030!important;border-bottom:1px solid #303030!important}
+.manifesto p{color:#aaa!important}
+.service-card,.faq-list details,.proof-grid>div{background:#080808!important;border-color:#303030!important;border-radius:0!important}
+.service-card h3,.faq-list summary,.proof-grid span{color:#f4f4f4!important}
+.contact-row,.footer{border-color:#303030!important}
+.modal-backdrop{background:rgba(0,0,0,.82)!important}
+.inquiry-modal{background:#080808!important;border:1px solid #444!important;border-radius:0!important}
+.inquiry-modal h2{color:#f4f4f4!important}.modal-copy,.modal-note{color:#aaa!important}
+.inquiry-text,.license-select{background:#050505!important;color:#f4f4f4!important;border-color:#444!important;border-radius:0!important}
+.modal-close{background:#222!important;color:#fff!important;border-radius:0!important}
+.toast{background:#f4f4f4!important;color:#050505!important;border-radius:0!important}
+@media(max-width:760px){.beats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.cover.artwork .cover-meta{padding-top:12px!important;font-size:6px!important}.cover.artwork .cover-title{font-size:clamp(19px,5vw,34px)!important;margin-top:10px!important}.cover-object{width:53%!important;top:59%!important}.cover-bpm{left:10px!important;bottom:10px!important;font-size:8px!important}.cover-serial{right:10px!important;bottom:10px!important;font-size:7px!important}.beat-body{padding:12px!important}.beat-title h3{font-size:20px!important}.beat-foot{gap:10px!important}.listen{font-size:8px!important}}
+@media(max-width:430px){.beats{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}.cover.artwork{aspect-ratio:1.05/1!important}.cover.artwork .cover-title{font-size:clamp(32px,9vw,48px)!important}.cover-object{width:46%!important}.beat-body{padding:15px!important}.beat-title h3{font-size:24px!important}.listen{font-size:9px!important}}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
@@ -1055,7 +1125,7 @@ const beats=[
 {title:"OVERTIME",genre:"OTHER",bpm:135,price:"ASK",symbol:"OT",index:"017",style:"pink",audio:"overtime 135 d#min dezz1re.mp3"},
 {title:"PACIFIC",genre:"OTHER",bpm:147,price:"ASK",symbol:"PA",index:"018",style:"blue",audio:"pacific 147 c#min (dezz1re) (1).mp3"}];
 let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
-function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork '+b.style+'"><span class="cover-meta">DEZZ1RE STUDIO <i> / </i> 2026</span><span class="cover-orbit" aria-hidden="true"></span><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span><span class="genre">UNDERGROUND AUDIO</span><span class="cover-coordinates">52°31' + "'" + 'N / 13°24' + "'" + 'E</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
+function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork accent-'+b.index+'"><span class="cover-meta">DEZZ1RE STUDIO</span><span class="cover-title">'+b.title+'</span><span class="cover-object" aria-hidden="true"><i></i><i></i><i></i></span><span class="cover-bpm">'+b.bpm+' BPM</span><span class="cover-serial">DZR / '+b.index+'</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.bpm+' BPM</div><div class="player-progress"><input class="seek" type="range" min="0" max="100" value="0" disabled aria-label="Track progress"><span class="time-readout">PREVIEW</span></div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
 let activeAudio=null,activeButton=null;
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 function formatTime(seconds){if(!Number.isFinite(seconds)||seconds<0)return'0:00';const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return m+':'+String(s).padStart(2,'0')}
