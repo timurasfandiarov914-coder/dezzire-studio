@@ -680,6 +680,13 @@ html,body{overflow-x:hidden}
 .kinetic-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;width:max-content;min-width:190px;margin-top:30px;padding:16px 19px;background:#111;color:#fff;border:1px solid #111;border-radius:0;font:10px var(--mono);letter-spacing:.8px;transition:background .2s,color .2s}
 .kinetic-cta:hover{background:#fff;color:#111}
 .kinetic-cta span{font-size:16px}
+
+.floating-face-zone{height:142px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid #333;background:#101010;perspective:700px}
+.floating-face{display:inline-block;color:#f1f0e9;font:900 clamp(42px,6vw,68px)/1 var(--sans);letter-spacing:-.12em;white-space:nowrap;transform-style:preserve-3d;text-shadow:1px 1px 0 #b9b8b1,2px 2px 0 #8d8c85,3px 3px 0 #66665f,4px 4px 0 #45453f,7px 10px 18px rgba(0,0,0,.8);animation:face-float 4.8s ease-in-out infinite,face-tilt 7s ease-in-out infinite alternate;will-change:transform}
+@keyframes face-float{0%,100%{translate:0 5px}50%{translate:0 -19px}}
+@keyframes face-tilt{0%{rotate:-7deg}50%{rotate:5deg}100%{rotate:-3deg}}
+@media(max-width:760px){.floating-face-zone{height:112px}.floating-face{text-shadow:1px 1px 0 #b9b8b1,2px 2px 0 #77766f,4px 6px 10px rgba(0,0,0,.8)}}
+@media(prefers-reduced-motion:reduce){.floating-face{animation:none}}
 .kinetic-hero .hero-bottom-clean{width:100%;padding:14px 0 17px!important;border-top:1px solid #111!important;justify-content:flex-start!important;color:#111!important;font:9px var(--mono)!important;letter-spacing:1px!important}
 @media(max-width:760px){
  .hero-clean.kinetic-hero{padding:0 16px!important}
@@ -761,6 +768,7 @@ html,body{overflow-x:hidden}
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav></header>
 <main id="top">
 <section class="hero-clean kinetic-hero" aria-label="DEZZ1RE beat catalog"><div class="hero-clean-inner"><div class="hero-main"><h1>DEZZ1RE<span class="hero-period">.</span></h1><div class="hero-motion"><div class="genre-marquee" aria-label="Trap, Drill, Rage, Sigilkore, Phonk, Experimental, Boom Bap, Hyperpop, Plugg, Afrobeats"><div class="genre-track"><div class="genre-group">TRAP <span>•</span> DRILL <span>•</span> RAGE <span>•</span> SIGILKORE <span>•</span> PHONK <span>•</span> EXPERIMENTAL <span>•</span> BOOM BAP <span>•</span> HYPERPOP <span>•</span> PLUGG <span>•</span> AFROBEATS <span>•</span></div><div class="genre-group" aria-hidden="true">TRAP <span>•</span> DRILL <span>•</span> RAGE <span>•</span> SIGILKORE <span>•</span> PHONK <span>•</span> EXPERIMENTAL <span>•</span> BOOM BAP <span>•</span> HYPERPOP <span>•</span> PLUGG <span>•</span> AFROBEATS <span>•</span></div></div></div><a class="kinetic-cta" href="#beats">ENTER CATALOG <span>↘</span></a></div></div><div class="hero-bottom-clean"><span>EST. 2026 / BERLIN</span></div></div></section>
+<div class="floating-face-zone" aria-label="Floating 3D face"><span class="floating-face">^⁠_⁠^</span></div>
 <section class="shell section" id="beats"><div class="section-top"><h2><span data-i="latest">The</span><br><span data-i="productions">catalog</span><span style="color:#93ad00">.</span></h2><p data-i="vol">VOL. 001<br>SELECTED BEATS / 2026</p></div><div class="filters"><input class="field search" id="search" type="search" placeholder="SEARCH THE CATALOG..." aria-label="Search beats"><select class="field" id="sort" aria-label="Sort beats"><option value="newest" data-newest>NEWEST FIRST</option><option value="bpm" data-bpm>BPM: LOW TO HIGH</option></select></div><div class="beats" id="catalog"></div></section>
 <section class="shell section services" id="services">
 <div class="section-top"><h2><span data-i="servicesTitle">Services</span><span style="color:#a2aaa0">.</span></h2><p data-i="servicesLabel">CUSTOM PRODUCTION<br>POST-PRODUCTION</p></div>
