@@ -869,6 +869,33 @@ html[data-theme="light"] .floating-face{color:#000!important}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* NAV + THEME CONTRAST REPAIR */
+@media(max-width:768px){
+ html body .shell.top{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;column-gap:10px!important;row-gap:12px!important;align-items:center!important;padding-top:14px!important;padding-bottom:12px!important;min-height:0!important;height:auto!important;flex-wrap:nowrap!important}
+ html body .shell.top>.logo{grid-column:1!important;grid-row:1!important;align-self:center!important;white-space:nowrap!important}
+ html body .shell.top>.nav{display:grid!important;position:static!important;grid-column:1/-1!important;grid-row:2!important;width:100%!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-rows:auto!important;gap:4px!important;align-items:center!important;justify-content:stretch!important;padding:0!important;min-width:0!important}
+ html body .shell.top>.nav>a{position:static!important;display:flex!important;grid-row:1!important;grid-column:auto!important;justify-content:center!important;align-items:center!important;min-width:0!important;width:100%!important;min-height:38px!important;padding:6px 0!important;font-size:clamp(8px,2.6vw,10px)!important;letter-spacing:0!important;white-space:nowrap!important}
+ html body .shell.top>.nav>.lang-switch,html body .shell.top>.nav>.theme-switch{position:absolute!important;top:13px!important;right:auto!important;min-width:0!important;min-height:34px!important;padding:6px 9px!important;margin:0!important;border-radius:999px!important;font-size:8px!important;white-space:nowrap!important}
+ html body .shell.top>.nav>.theme-switch{right:0!important}
+ html body .shell.top>.nav>.lang-switch{right:76px!important}
+}
+@media(max-width:380px){
+ html body .shell.top>.logo{font-size:14px!important}
+ html body .shell.top>.nav>a{font-size:7.5px!important}
+ html body .shell.top>.nav>.lang-switch{right:70px!important;padding:5px 7px!important}
+ html body .shell.top>.nav>.theme-switch{padding:5px 6px!important}
+}
+/* Dark theme: remove inherited hard-coded dark text while preserving cover art and the light manifesto panel */
+html[data-theme="dark"] body{color:var(--ink)!important}
+html[data-theme="dark"] main p,html[data-theme="dark"] main li,html[data-theme="dark"] main label,html[data-theme="dark"] main .eyebrow,html[data-theme="dark"] main .intro,html[data-theme="dark"] main .hero-note,html[data-theme="dark"] main .art-label,html[data-theme="dark"] main .art-sticker,html[data-theme="dark"] main .section-top p,html[data-theme="dark"] main .proof-grid span,html[data-theme="dark"] main .proof-note,html[data-theme="dark"] main .service-card p,html[data-theme="dark"] main .service-card-top,html[data-theme="dark"] main .service-card-bottom,html[data-theme="dark"] main .faq-list details p,html[data-theme="dark"] main .contact-row,html[data-theme="dark"] main .contact-actions a,html[data-theme="dark"] main .marquee,html[data-theme="dark"] main .marquee span{color:var(--muted)!important}
+html[data-theme="dark"] main h1,html[data-theme="dark"] main h2,html[data-theme="dark"] main h3,html[data-theme="dark"] main h4,html[data-theme="dark"] main .intro strong,html[data-theme="dark"] main .proof-grid strong,html[data-theme="dark"] main .service-card h3,html[data-theme="dark"] main .faq-list summary,html[data-theme="dark"] main .contact h2{color:var(--ink)!important}
+html[data-theme="dark"] main a:not(.pill):not(.kinetic-cta),html[data-theme="dark"] main button:not(.pill):not(.kinetic-cta){color:var(--ink)}
+html[data-theme="dark"] main .manifesto{background:#151517!important;color:var(--ink)!important}
+html[data-theme="dark"] main .manifesto h2{color:var(--ink)!important}
+html[data-theme="dark"] main .manifesto p{color:#c0c0c5!important}
+html[data-theme="dark"] main .cover,html[data-theme="dark"] main .cover *{color:inherit}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
