@@ -1146,8 +1146,9 @@ html[data-theme="light"] .blackout-marquee{background:#050505!important;color:#e
 
 
 /* Actual chrome objects from the approved visual reference */
-.blackout-hero-art .hero-metal-object.hero-use-sprite{background-image:url('assets/chrome-sculptures.webp')!important;background-size:auto 100%!important;background-position:left center!important;background-repeat:no-repeat!important;filter:grayscale(1) brightness(1.18)!important;mix-blend-mode:screen!important;opacity:.86!important}
+.blackout-hero-art .hero-metal-object.hero-use-sprite{position:absolute!important;top:50%!important;left:53%!important;width:min(94%,450px)!important;height:auto!important;aspect-ratio:1/1!important;right:auto!important;bottom:auto!important;transform:translate(-26%,-50%)!important;background-image:url('assets/chrome-sculptures.webp')!important;background-size:300% 100%!important;background-position:left center!important;background-repeat:no-repeat!important;filter:grayscale(1) brightness(1.18)!important;mix-blend-mode:screen!important;opacity:.86!important}
 .blackout-hero-art .hero-metal-object.hero-use-sprite svg{display:none!important}
+@media(max-width:700px){.blackout-hero-art .hero-metal-object.hero-use-sprite{left:63%!important;width:min(110vw,340px)!important;transform:translate(-25%,-50%)!important}}
 #beats .cover.artwork .cover-object-art{position:absolute!important;inset:0!important;z-index:1!important;display:block!important;background-image:url('assets/chrome-sculptures.webp')!important;background-repeat:no-repeat!important;background-size:300% 100%!important;background-color:transparent!important;transition:transform .35s ease,filter .35s ease!important}
 #beats .cover.artwork .cover-object-art.art-spike{background-position:left center!important}
 #beats .cover.artwork .cover-object-art.art-orbit{background-position:center center!important}
