@@ -602,6 +602,68 @@ html,body{overflow-x:hidden}
 @media(max-width:760px){.service-grid{grid-template-columns:1fr}.service-card+.service-card{border-left:0;border-top:1px solid #333}.service-card{min-height:250px}.service-card h3{margin-top:30px}}
 @media(max-width:420px){.service-card{padding:20px 16px}.service-card-bottom{align-items:stretch;flex-direction:column}.service-order{width:100%}}
 
+
+/* Mobile header and catalog controls: prevent viewport overflow */
+*,*::before,*::after{box-sizing:border-box}
+@media(max-width:768px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .shell{padding-left:16px!important;padding-right:16px!important;min-width:0}
+  .top{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-rows:auto auto;
+    align-items:center;
+    column-gap:12px;
+    row-gap:10px;
+    width:100%;
+    min-width:0;
+    padding:14px 0 16px!important;
+    overflow:visible;
+  }
+  .top>.logo{grid-column:1;grid-row:1;min-width:0;max-width:100%;line-height:1.1}
+  .top>.logo small{white-space:normal;overflow-wrap:anywhere;margin-top:7px;line-height:1.5}
+  .top>.nav{display:contents!important}
+  .top>.nav>a:nth-of-type(1){grid-column:1;grid-row:2}
+  .top>.nav>a:nth-of-type(2){grid-column:2;grid-row:2}
+  .top>.nav>a:nth-of-type(3){grid-column:3;grid-row:2}
+  .top>.nav>a:nth-of-type(4){grid-column:4;grid-row:2}
+  .top>.nav>a{
+    display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;
+    padding:10px 5px;font-size:9px;line-height:1.2;letter-spacing:.15px;
+    white-space:nowrap;text-align:center;
+  }
+  .top>.nav>.lang-switch{
+    grid-column:2;grid-row:1;justify-self:end;align-self:center;min-width:44px;min-height:44px;
+    padding:10px;margin:0;border-radius:0!important;white-space:nowrap;
+  }
+  .top-right{display:none!important}
+  .hero-clean{padding-left:16px;padding-right:16px;min-width:0}
+  .hero-clean-inner{width:100%;min-width:0;padding:22px 0 20px}
+  .hero-kicker{align-items:flex-start;gap:8px;min-width:0;max-width:100%;line-height:1.5;overflow-wrap:anywhere}
+  .hero-kicker>[data-i="eyebrow"]{min-width:0;overflow-wrap:anywhere}
+  .hero-main{grid-template-columns:minmax(0,1fr);gap:28px;padding:68px 0 38px;min-width:0}
+  .hero-main h1{max-width:100%;font-size:clamp(56px,15.8vw,100px);letter-spacing:-.09em;white-space:normal;overflow-wrap:anywhere}
+  .hero-side{width:100%;max-width:100%;min-width:0}
+  .hero-bottom-clean{gap:14px;flex-wrap:wrap;align-items:flex-start}
+  .filters{display:flex!important;flex-direction:column!important;align-items:stretch;gap:12px;width:100%;max-width:100%;min-width:0}
+  .filters .search,.filters>#sort,.filters>.field{
+    display:block;width:100%!important;min-width:0!important;max-width:100%!important;
+    margin:0!important;box-sizing:border-box!important;
+  }
+  .filters .search{margin-bottom:4px!important}
+  .filters select{padding-right:36px!important}
+  input,select,textarea,button{max-width:100%;min-width:0;box-sizing:border-box}
+  .section,.section-top,.beats,.manifesto-inner,.proof-grid,.service-grid,.contact-row{min-width:0;max-width:100%}
+  .section-top h2,.section-top p{min-width:0;max-width:100%;overflow-wrap:anywhere}
+}
+@media(max-width:390px){
+  .shell{padding-left:12px!important;padding-right:12px!important}
+  .top>.nav>a{padding-left:3px;padding-right:3px;font-size:8px;letter-spacing:0}
+  .top{column-gap:8px}
+  .hero-clean{padding-left:12px;padding-right:12px}
+  .hero-main h1{font-size:clamp(52px,15.5vw,68px)}
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
