@@ -205,12 +205,44 @@ body{background:#f5f5f7;color:#1d1d1f;background-image:none;font-family:-apple-s
 .contact-actions{max-width:none}
 }
 
+
+/* FINAL HERO REDESIGN: one restrained editorial system, no poster panel or ticker */
+.hero-clean{padding:0 clamp(18px,4vw,64px);border-bottom:1px solid var(--line);background:#f5f5f7;color:#1d1d1f}
+.hero-clean-inner{max-width:1312px;margin:0 auto;padding:30px 0 26px}
+.hero-kicker{display:flex;align-items:center;gap:10px;font:10px var(--mono);letter-spacing:.35px;color:#6e6e73}
+.status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#1d1d1f}
+.hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,290px);gap:40px;align-items:end;padding:clamp(70px,11vw,148px) 0 clamp(44px,6vw,76px)}
+.hero-main h1{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:clamp(82px,14.2vw,194px);font-weight:600;letter-spacing:-.105em;line-height:.8;margin:0;white-space:nowrap}
+.hero-period{color:#86868b}
+.hero-side{padding-bottom:5px;max-width:290px}
+.hero-side .intro{font-size:15px;line-height:1.65;color:#6e6e73;margin:0 0 26px;max-width:29ch}
+.hero-link{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;padding:14px 0;border-top:1px solid #d2d2d7;border-bottom:1px solid #d2d2d7;font:10px var(--mono);letter-spacing:.5px;transition:color .2s}
+.hero-link-arrow{font-size:17px;transition:transform .2s}
+.hero-link:hover{color:#6e6e73}.hero-link:hover .hero-link-arrow{transform:translate(3px,3px)}
+.hero-bottom-clean{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-top:17px;border-top:1px solid #d2d2d7;font:9px/1.7 var(--mono);letter-spacing:.45px;color:#86868b}
+.hero-bottom-clean>span:first-child{white-space:pre-line}
+.hero-index{text-align:right}
+.marquee{display:none!important}
+@media(max-width:760px){
+.hero-clean{padding:0 20px}
+.hero-clean-inner{padding:24px 0 20px}
+.hero-main{grid-template-columns:1fr;gap:28px;padding:clamp(80px,18vw,128px) 0 44px}
+.hero-main h1{font-size:clamp(67px,14.3vw,108px);letter-spacing:-.095em}
+.hero-side{max-width:380px}
+.hero-side .intro{font-size:15px;margin-bottom:22px;max-width:34ch}
+.hero-link{max-width:320px}
+}
+@media(max-width:390px){
+.hero-clean{padding:0 16px}
+.hero-main{padding-top:78px}
+.hero-main h1{font-size:clamp(57px,14.2vw,68px);letter-spacing:-.09em}
+.hero-bottom-clean{font-size:8px;gap:12px}
+}
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
 <main id="top">
-<section class="shell hero"><div class="hero-copy"><div class="eyebrow" data-i="eyebrow">Independent producer / original beats</div><div><h1>NO<br><span class="outline">SAFE</span><span>SOUND.</span></h1><p class="intro" data-i="intro">Original beats and instrumentals. Browse the catalog and find a sound that fits your next track.</p></div><div class="hero-bottom"><a class="pill" href="#beats"><span data-i="find">FIND YOUR SOUND</span> <span>↘</span></a><div class="hero-note" data-i="norules">ORIGINAL BEATS<br>UPDATED REGULARLY</div></div></div><div class="hero-art"><div class="art-label"><span>DEZZ1RE STUDIO®</span><span>ISSUE Nº 001</span></div><div class="art-sticker">SOUND<br>WITHOUT<br>PERMISSION</div></div></section>
-<div class="marquee">UNDERGROUND SOUND <span>✳</span> NO GENERIC LOOPS <span>✳</span> BUILT FOR YOUR NEXT TRACK <span>✳</span> DEZZ1RE STUDIO <span>✳</span></div>
+<section class="hero-clean"><div class="hero-clean-inner"><div class="hero-kicker"><span class="status-dot"></span><span data-i="eyebrow">Independent producer / original beats</span></div><div class="hero-main"><h1>DEZZ1RE<span class="hero-period">.</span></h1><div class="hero-side"><p class="intro" data-i="intro">Original beats and instrumentals. Browse the catalog and find a sound that fits your next track.</p><a class="hero-link" href="#beats"><span data-i="find">BROWSE BEATS</span><span class="hero-link-arrow">↘</span></a></div></div><div class="hero-bottom-clean"><span data-i="norules">ORIGINAL BEATS<br>UPDATED REGULARLY</span><span class="hero-index">INDEPENDENT SOUND&nbsp; / &nbsp;2026</span></div></div></section>
 <section class="shell section" id="beats"><div class="section-top"><h2><span data-i="latest">The</span><br><span data-i="productions">catalog</span><span style="color:#93ad00">.</span></h2><p data-i="vol">VOL. 001<br>SELECTED BEATS / 2026</p></div><div class="filters"><input class="field search" id="search" type="search" placeholder="SEARCH THE CATALOG..." aria-label="Search beats"><select class="field" id="sort" aria-label="Sort beats"><option value="featured" data-featured>FEATURED FIRST</option><option value="bpm" data-bpm>BPM: LOW TO HIGH</option></select></div><div class="beats" id="catalog"></div></section>
 <section class="manifesto" id="about"><div class="shell manifesto-inner"><h2><span data-i="madefor">Made for</span><br><span data-i="outsiders">the rare.</span></h2><p><span data-i="manifesto">Independent producer making original beats and instrumentals. For placements, custom beats and collaborations, get in touch.</span><br><br><span class="micro" data-i="keep">DEZZ1RE STUDIO® / ORIGINAL BEATS.</span></p></div></section>
 <section class="shell contact" id="contact"><div class="contact-row"><h2><span data-i="got">Let's</span><br><span data-i="mind">work.</span></h2><div class="contact-actions"><a class="pill" href="https://www.instagram.com/dezz1rebeats/" target="_blank" rel="noopener"><span data-i="connect">INSTAGRAM DM</span> ↗</a><a class="pill" href="https://t.me/dezz1re" target="_blank" rel="noopener">TELEGRAM ↗</a></div></div><footer class="footer"><span>© 2026 DEZZ1RE STUDIO</span><div class="footer-links"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="https://www.instagram.com/dezz1rebeats/" target="_blank" rel="noopener" data-i="instagram">INSTAGRAM DM ↗</a><a href="https://t.me/dezz1re" target="_blank" rel="noopener">TELEGRAM ↗</a></div><span>MADE INDEPENDENTLY.</span></footer></section>
