@@ -293,7 +293,7 @@ body{background:#fff;color:#111}
 .faq-list summary{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;cursor:pointer;list-style:none;font-size:clamp(15px,2vw,20px);font-weight:500}
 .faq-list summary::-webkit-details-marker{display:none}
 .faq-list summary span{font-size:24px;font-weight:400}
-.faq-list details[open] summary span{transform:rotate(45deg)}
+.faq-list details[open] summary span:last-child{transform:rotate(45deg)}
 .faq-list details p{max-width:760px;margin:0;padding:0 30px 22px 0;color:#555;font-size:14px;line-height:1.7}
 .global-player{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:48px minmax(110px,1fr) minmax(90px,2fr) auto 34px;align-items:center;gap:16px;padding:12px clamp(16px,4vw,48px);background:#fff;border-top:1px solid #111;transform:translateY(110%);visibility:hidden;transition:transform .22s,visibility .22s}
 .global-player.is-active{transform:translateY(0);visibility:visible}
@@ -383,6 +383,29 @@ body{padding-bottom:0}
 .proof .section-top h2,.faq .section-top h2{max-width:100%}
 .faq-list summary [data-i]{flex:1}
 @media(hover:none){.cover-play{opacity:1;width:34px;height:34px}.cover-play:before{border-top-width:7px;border-bottom-width:7px;border-left-width:11px}}
+
+/* FINAL FIXES: preview only via button, FAQ accordion, visible contact actions */
+.cover-play{display:none!important}
+.cover:hover:after{pointer-events:none}
+.faq-list details:not([open])>p{display:none!important}
+.faq-list details[open]>p{display:block}
+.faq-list details[open] summary span:first-child{transform:none!important}
+.faq-list details summary span:last-child{display:inline-block;flex:0 0 auto;transform:rotate(0);transition:transform .18s}
+.faq-list details[open] summary span:last-child{transform:rotate(45deg)}
+.contact-actions .pill{
+  background:#1d1d1f!important;
+  color:#fff!important;
+  border:1px solid #1d1d1f!important;
+  border-radius:0!important;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.contact-actions .pill .social-icon{fill:currentColor}
+.contact-actions .pill:hover,.contact-actions .pill:focus-visible{
+  background:transparent!important;
+  color:#1d1d1f!important;
+  border-color:#1d1d1f!important;
+}
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
@@ -402,7 +425,7 @@ const beats=[
 {title:"MDM",genre:"OTHER",bpm:155,price:"ASK",symbol:"MDM",index:"004",style:"blue",audio:"MDM 155 DEZZ1RE.mp3"},
 {title:"MED",genre:"OTHER",bpm:142,price:"ASK",symbol:"MED",index:"005",style:"white",audio:"MED 142 DEZZ1RE.mp3"}];
 let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
-function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover '+b.style+'"><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span><button class="cover-play preview" type="button" aria-label="Play '+b.title+'" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">▶</button></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; ПРЕВЬЮ':'▶ &nbsp; PREVIEW')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
+function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover '+b.style+'"><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; ПРЕВЬЮ':'▶ &nbsp; PREVIEW')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
 let activeAudio=null,activeButton=null;
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 function formatTime(seconds){if(!Number.isFinite(seconds)||seconds<0)return'0:00';const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return m+':'+String(s).padStart(2,'0')}
