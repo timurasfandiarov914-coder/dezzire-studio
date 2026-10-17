@@ -49,6 +49,51 @@ body{background:#101511;color:#f1f0e9}.shell{max-width:1440px;padding-left:clamp
 .filters{grid-template-columns:minmax(0,1.6fr) minmax(160px,.8fr)}
 @media(max-width:760px){.hero-art:before{width:70%;left:15%;top:13%}.hero-art:after{width:38%}.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:auto}}
 @media(max-width:480px){.filters{grid-template-columns:1fr}.filters .search{grid-column:auto}}
+
+/* DEZZ1RE ART DIRECTION / 2026.10 */
+:root{--acid:#d6ff42;--signal:#ef493c}
+body{background-color:#0b100c;background-image:radial-gradient(ellipse at 12% 5%,rgba(52,76,48,.18),transparent 38%),radial-gradient(ellipse at 88% 42%,rgba(49,65,40,.12),transparent 35%)}
+.top{position:relative;border-bottom-color:#394239}
+.logo{letter-spacing:-1.1px}.logo span{color:#d6ff42}
+.hero{position:relative;gap:clamp(26px,4vw,64px);padding-top:14px;padding-bottom:22px;min-height:700px}
+.hero-copy{position:relative;z-index:1}
+.hero h1{font-size:clamp(96px,13.8vw,202px);line-height:.72;letter-spacing:-.125em}
+.hero h1 .outline{-webkit-text-stroke:1px rgba(241,240,233,.72)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:#c0c9bc}
+.eyebrow:before{content:"";display:inline-block;width:7px;height:7px;background:#ef493c;box-shadow:0 0 0 4px rgba(239,73,60,.12);margin:0}
+.hero-art{margin:18px 0 28px;min-height:570px;background-color:#131c14;background-image:linear-gradient(rgba(214,255,66,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(214,255,66,.055) 1px,transparent 1px),radial-gradient(ellipse at 52% 46%,#293829 0%,#182319 43%,#101711 78%);background-size:34px 34px,34px 34px,100% 100%;border:1px solid #53604d;box-shadow:inset 0 0 0 8px rgba(214,255,66,.018),0 24px 70px rgba(0,0,0,.15)}
+.hero-art:before{width:76%;left:12%;top:17%;border:1px solid rgba(214,255,66,.65);box-shadow:0 0 0 1px rgba(214,255,66,.035),0 0 0 24px rgba(214,255,66,.045),0 0 0 25px rgba(214,255,66,.08),0 0 0 62px rgba(214,255,66,.025),0 0 0 63px rgba(214,255,66,.045),inset 0 0 60px rgba(214,255,66,.045)}
+.hero-art:after{left:50%;top:49%;width:32%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(45deg);border:1px solid #ef493c;background:linear-gradient(135deg,rgba(239,73,60,.22),rgba(239,73,60,.015) 55%,rgba(214,255,66,.09));box-shadow:0 0 0 12px rgba(239,73,60,.025),18px 18px 0 -1px rgba(214,255,66,.12),36px 36px 0 -1px rgba(214,255,66,.045)}
+.art-label{left:18px;right:18px;top:18px;color:#d4dccf;font-size:8px;letter-spacing:1.5px}
+.art-sticker{min-width:116px;min-height:74px;background:#d6ff42;color:#101511;border:0;font-size:8px;font-weight:500;line-height:1.6;transform:rotate(-4deg);box-shadow:5px 5px 0 #ef493c}
+.marquee{border-top:1px solid #303a31;border-bottom-color:#303a31;background:#0e140f;padding:17px 0;letter-spacing:2.5px}
+.section-top h2{letter-spacing:-.115em}
+.filters{border-top:1px solid #53604d;border-bottom:1px solid #53604d}
+.field{background:#121a13}
+.beat{position:relative}
+.beat:hover{background:#182219}
+.cover{outline:1px solid rgba(214,255,66,.04);outline-offset:-5px}
+.manifesto{position:relative;overflow:hidden}
+.manifesto:after{content:"DZR / 001";position:absolute;right:clamp(18px,4vw,64px);top:16px;font:9px var(--mono);letter-spacing:2px;color:rgba(16,21,17,.55)}
+.manifesto-inner{position:relative;z-index:1}
+.contact-row{border-bottom-color:#465047}
+.contact h2{max-width:700px}
+@media(max-width:760px){
+.hero{min-height:0;padding-top:0;padding-bottom:20px}
+.hero-copy{min-height:480px}
+.hero h1{font-size:clamp(88px,19vw,148px)}
+.hero-art{min-height:390px;margin:0 0 20px}
+.hero-art:before{width:72%;left:14%;top:14%}
+.hero-art:after{width:38%}
+}
+@media(max-width:480px){
+.hero-copy{min-height:440px}
+.hero h1{font-size:clamp(78px,19vw,104px)}
+.hero-art{min-height:300px}
+.art-sticker{min-width:96px;min-height:62px;right:15px;bottom:15px}
+.manifesto:after{font-size:7px}
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
