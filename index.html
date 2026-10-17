@@ -1809,6 +1809,19 @@ html[data-theme="dark"] body ::selection{background:#414a2b;color:#fff}
   }
 }
 
+
+/* Catalog refinement: live count, reset action, and responsive controls. */
+#beats .filters{margin-bottom:0}
+#beats .catalog-status{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding:12px 0;border-bottom:1px solid var(--line)}
+#beats .catalog-count{font:9px var(--mono);letter-spacing:.8px;color:var(--muted)}
+#beats .catalog-reset{border:0;padding:8px 0;background:transparent;color:var(--ink);font:9px var(--mono);letter-spacing:.7px;cursor:pointer;text-underline-offset:4px;text-decoration:underline;text-decoration-color:transparent;transition:opacity .2s,text-decoration-color .2s}
+#beats .catalog-reset:hover:not(:disabled){text-decoration-color:currentColor}
+#beats .catalog-reset:disabled{opacity:.38;cursor:default;text-decoration:none}
+#beats #catalog[aria-live]{min-height:40px}
+#beats .catalog-reset:focus-visible{outline:2px solid var(--theme-accent,#d9e66b);outline-offset:4px}
+@media(max-width:760px){#beats .catalog-status{min-height:44px}}
+@media(max-width:420px){#beats .catalog-status{align-items:flex-start;flex-direction:column;justify-content:center;gap:5px;padding:10px 0}#beats .catalog-reset{padding:3px 0}}
+@media(prefers-reduced-motion:reduce){#beats .catalog-reset{transition:none}}
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
@@ -1817,7 +1830,7 @@ html[data-theme="dark"] body ::selection{background:#414a2b;color:#fff}
 <div class="blackout-hero-top"><span>DEZZ1RE STUDIO / ORIGINAL SOUND</span><span>INDEPENDENT MUSIC PRODUCTION&nbsp;&nbsp; +</span></div>
 <div class="blackout-hero-main"><div class="blackout-hero-copy"><p class="blackout-kicker">PREMIUM AUDIO / 001</p><h1 data-i="heroTitle">PREMIUM BEATS<br>FOR CREATORS</h1><p class="blackout-intro" data-i="heroSub">High quality beats. No limits.<br>Find your sound.</p><a class="kinetic-cta blackout-cta" href="#beats"><span data-i="heroCta">EXPLORE BEATS</span><b>⟶</b></a></div><div class="blackout-hero-art" aria-hidden="true"><div class="hero-target-ring"></div><div class="hero-metal-object"></div><span class="hero-plus">+</span></div></div>
 <div class="blackout-hero-bottom"><span>BEAT CATALOG / VOL. 001</span><span>DESIGNED FOR INDEPENDENT ARTISTS</span></div></section>
-<div class="blackout-marquee" aria-label="Music genres"><div class="blackout-marquee-track"><span>TRAP</span><b>✳</b><span>DRILL</span><b>✳</b><span>UNDERGROUND</span><b>✳</b><span>HYPERPOP</span><b>✳</b><span>EXPERIMENTAL</span><b>✳</b><span>RAGE</span><b>✳</b><span>PHONK</span><b>✳</b><span>TRAP</span><b>✳</b><span>DRILL</span><b>✳</b><span>UNDERGROUND</span><b>✳</b><span>HYPERPOP</span><b>✳</b><span>EXPERIMENTAL</span><b>✳</b><span>RAGE</span><b>✳</b></div></div><section class="shell section" id="beats"><div class="section-top"><h2 data-i="catalogTitle">CATALOG</h2><p data-i="vol">18 TRACKS<br>ALL ORIGINAL / 2026</p></div><div class="filters"><input class="field search" id="search" type="search" placeholder="SEARCH THE CATALOG..." aria-label="Search beats"><select class="field" id="sort" aria-label="Sort beats"><option value="newest" data-newest>NEWEST FIRST</option><option value="bpm" data-bpm>BPM: LOW TO HIGH</option></select></div><div class="beats" id="catalog"></div></section>
+<div class="blackout-marquee" aria-label="Music genres"><div class="blackout-marquee-track"><span>TRAP</span><b>✳</b><span>DRILL</span><b>✳</b><span>UNDERGROUND</span><b>✳</b><span>HYPERPOP</span><b>✳</b><span>EXPERIMENTAL</span><b>✳</b><span>RAGE</span><b>✳</b><span>PHONK</span><b>✳</b><span>TRAP</span><b>✳</b><span>DRILL</span><b>✳</b><span>UNDERGROUND</span><b>✳</b><span>HYPERPOP</span><b>✳</b><span>EXPERIMENTAL</span><b>✳</b><span>RAGE</span><b>✳</b></div></div><section class="shell section" id="beats"><div class="section-top"><h2 data-i="catalogTitle">CATALOG</h2><p data-i="vol">18 TRACKS<br>ALL ORIGINAL / 2026</p></div><div class="filters"><input class="field search" id="search" type="search" placeholder="SEARCH THE CATALOG..." aria-label="Search beats"><select class="field" id="sort" aria-label="Sort beats"><option value="newest" data-newest>NEWEST FIRST</option><option value="bpm" data-bpm>BPM: LOW TO HIGH</option><option value="bpm-desc" data-bpm-desc>BPM: HIGH TO LOW</option><option value="title" data-title-sort>TITLE: A–Z</option></select><select class="field" id="tempoFilter" aria-label="Filter by tempo"><option value="all" data-tempo-all>ALL BPM</option><option value="under140" data-tempo-under>UNDER 140 BPM</option><option value="140-159" data-tempo-mid>140–159 BPM</option><option value="160plus" data-tempo-high>160+ BPM</option></select></div><div class="catalog-status"><span id="catalogCount" class="catalog-count" aria-live="polite">SHOWING 18 / 18 BEATS</span><button id="clearCatalogFilters" class="catalog-reset" type="button" disabled>RESET FILTERS ↺</button></div><div class="beats" id="catalog" aria-live="polite"></section>
 <section class="shell section services" id="services">
 <div class="section-top"><h2><span data-i="servicesTitle">Services</span><span style="color:#a2aaa0">.</span></h2><p data-i="servicesLabel">CUSTOM PRODUCTION<br>POST-PRODUCTION</p></div>
 <div class="service-grid">
@@ -1851,10 +1864,29 @@ const beats=[
 {title:"KULAK",genre:"OTHER",bpm:142,price:"ASK",symbol:"KU",index:"016",style:"lime",audio:"kulak 142 cmin (dezz1re + enosonek).mp3"},
 {title:"OVERTIME",genre:"OTHER",bpm:135,price:"ASK",symbol:"OT",index:"017",style:"pink",audio:"overtime 135 d#min dezz1re.mp3"},
 {title:"PACIFIC",genre:"OTHER",bpm:147,price:"ASK",symbol:"PA",index:"018",style:"blue",audio:"pacific 147 c#min (dezz1re) (1).mp3"}];
-let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
+let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort'),tempoFilter=document.getElementById('tempoFilter'),catalogCount=document.getElementById('catalogCount'),clearCatalogFilters=document.getElementById('clearCatalogFilters');
 
 function artFamily(b){if(b.title==='CORN')return 'spike';if(b.title==='KULAK')return 'orbit';if(b.title==='PACIFIC')return 'crystal';return ['spike','orbit','crystal'][(Number(b.index)-1)%3]}
-function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else{const featured=['CORN','KULAK','PACIFIC'];list.sort((a,b)=>{const ai=featured.indexOf(a.title),bi=featured.indexOf(b.title);if(ai!==-1||bi!==-1)return(ai===-1?99:ai)-(bi===-1?99:bi);return Number(a.index)-Number(b.index)})}catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork accent-'+b.index+'"><div class="cover-title">'+b.title+'</div><div class="cover-object-art art-'+artFamily(b)+'" aria-hidden="true"></div><div class="cover-bpm">'+b.bpm+' BPM</div><div class="cover-plus">+</div></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+(currentLang==='ru'?'ОРИГИНАЛЬНЫЙ БИТ':'ORIGINAL BEAT')+'</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)));refreshMotionTargets()}
+function render(){
+ const query=search.value.trim().toLowerCase(),tempo=tempoFilter.value;
+ let list=beats.filter(b=>{
+  const matchesQuery=(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(query);
+  const matchesTempo=tempo==='all'||(tempo==='under140'&&b.bpm<140)||(tempo==='140-159'&&b.bpm>=140&&b.bpm<=159)||(tempo==='160plus'&&b.bpm>=160);
+  return matchesQuery&&matchesTempo;
+ });
+ if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm||a.title.localeCompare(b.title));
+ else if(sort.value==='bpm-desc')list.sort((a,b)=>b.bpm-a.bpm||a.title.localeCompare(b.title));
+ else if(sort.value==='title')list.sort((a,b)=>a.title.localeCompare(b.title));
+ else{const featured=['CORN','KULAK','PACIFIC'];list.sort((a,b)=>{const ai=featured.indexOf(a.title),bi=featured.indexOf(b.title);if(ai!==-1||bi!==-1)return(ai===-1?99:ai)-(bi===-1?99:bi);return Number(a.index)-Number(b.index)})}
+ const ru=currentLang==='ru';
+ catalogCount.textContent=ru?'ПОКАЗАНО '+list.length+' ИЗ '+beats.length+' БИТОВ':'SHOWING '+list.length+' / '+beats.length+' BEATS';
+ clearCatalogFilters.disabled=!query&&sort.value==='newest'&&tempo==='all';
+ catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork accent-'+b.index+'"><div class="cover-title">'+b.title+'</div><div class="cover-object-art art-'+artFamily(b)+'" aria-hidden="true"></div><div class="cover-bpm">'+b.bpm+' BPM</div><div class="cover-plus">+</div></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(ru?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+(ru?'ОРИГИНАЛЬНЫЙ БИТ':'ORIGINAL BEAT')+'</div><div class="beat-foot"><button class="listen preview" type="button" aria-label="'+(ru?'Слушать бит ':'Listen to beat ')+b.title+'" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(ru?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" type="button" aria-label="'+(ru?'Купить бит ':'Buy beat ')+b.title+'" data-title="'+b.title+'">'+(ru?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(ru?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК ИЛИ ФИЛЬТР BPM.':'NO BEATS FOUND. CHANGE YOUR SEARCH OR BPM FILTER.')+'</div>';
+ document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));
+ document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)));
+ if(typeof activeAudio!=='undefined'&&activeAudio)updatePlayerUI();
+ refreshMotionTargets();
+}
 let activeAudio=null,activeButton=null;
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 function formatTime(seconds){if(!Number.isFinite(seconds)||seconds<0)return'0:00';const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return m+':'+String(s).padStart(2,'0')}
