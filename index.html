@@ -424,6 +424,114 @@ html,body{overflow-x:hidden}
   .hero h1{font-size:clamp(64px,17vw,132px)}
 }
 
+
+/* MOBILE UX FIXES: catalog, FAQ, metadata, navigation, proof note */
+@media (max-width: 768px) {
+  /* Catalog: full-width cards and covers, no half-empty final column */
+  .beats {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+  .beats > .beat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+  .beats > .beat > .cover {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    aspect-ratio: 1.25 / 1;
+    align-self: stretch;
+  }
+  .beats > .beat > .beat-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
+    column-gap: 12px;
+    row-gap: 0;
+    min-width: 0;
+    padding: 16px;
+  }
+  .beats > .beat .beat-title h3 {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    font-size: clamp(20px, 5.5vw, 28px);
+    overflow-wrap: anywhere;
+  }
+  .beats > .beat .beat-title .price {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 12px;
+    white-space: normal;
+    font-size: 10px;
+    color: #c5c5bd !important;
+  }
+  .beats > .beat .details {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1.5;
+    color: #c5c5bd !important;
+  }
+  .beats > .beat .player-progress {
+    grid-column: 1 / -1;
+  }
+  .beats > .beat .beat-foot {
+    grid-column: 1 / -1;
+  }
+
+  /* FAQ: keep questions readable without creating a wall of text */
+  .faq-list summary {
+    font-size: clamp(20px, 3.2vw, 24px);
+    line-height: 1.2;
+    gap: 14px;
+  }
+  .faq-list summary span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .faq-list summary span:last-child {
+    flex: 0 0 auto;
+  }
+
+  /* Header: reliable touch targets on narrow phones */
+  .nav {
+    gap: 2px;
+    font-size: 9px;
+  }
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 14px;
+  }
+  .lang-switch {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Built for artists: stronger contrast on the current dark theme */
+  .proof-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c5c5bd !important;
+  }
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
