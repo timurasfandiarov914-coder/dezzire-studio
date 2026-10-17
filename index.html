@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f5f5f7"><meta name="description" content="DEZZ1RE STUDIO — underground beats and sound for independent artists.">
+<meta name="theme-color" content="#050505"><meta name="description" content="DEZZ1RE STUDIO — underground beats and sound for independent artists.">
 <title>DEZZ1RE STUDIO — Independent Sound</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&family=Michroma&display=swap" rel="stylesheet">
@@ -1494,6 +1494,321 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 /* Final QA polish: retain each cover's individual accent tint on hover. */
 #globalSeek:disabled{opacity:.45;cursor:not-allowed}
 @media(hover:none){#beats .beat:hover{transform:none!important}}
+
+
+/* Theme QA v2 — consistent surfaces, readable secondary text, and focus states. */
+html[data-theme="light"]{
+  color-scheme:light;
+  --paper:#f3f3ef;
+  --ink:#151515;
+  --muted:#62625e;
+  --line:#c9c9c2;
+  --surface:#fafaf7;
+  --surface-raised:#ffffff;
+  --surface-muted:#e8e8e2;
+  --theme-border-soft:#dddd d6;
+  --theme-hover:#ffffff;
+  --theme-control:#fafaf7;
+  --theme-control-focus:#ffffff;
+  --theme-heading:#111111;
+  --theme-secondary:#5f5f5a;
+  --theme-accent:#596d54;
+  background:#f3f3ef!important;
+}
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#050505;
+  --ink:#f2f2f0;
+  --muted:#a1a19c;
+  --line:#303030;
+  --surface:#0b0b0b;
+  --surface-raised:#121212;
+  --surface-muted:#191919;
+  --theme-border-soft:#262626;
+  --theme-hover:#151515;
+  --theme-control:#0b0b0b;
+  --theme-control-focus:#151515;
+  --theme-heading:#f5f5f2;
+  --theme-secondary:#a7a7a1;
+  --theme-accent:#d9e66b;
+  background:#050505!important;
+}
+html[data-theme="light"] body{background:var(--paper)!important;color:var(--ink)!important}
+html[data-theme="dark"] body{background:var(--paper)!important;color:var(--ink)!important}
+
+/* Header and hero */
+html[data-theme="light"] body .top,
+html[data-theme="light"] body .blackout-hero{
+  background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;
+}
+html[data-theme="dark"] body .top,
+html[data-theme="dark"] body .blackout-hero{
+  background:#080808!important;color:var(--ink)!important;border-color:var(--line)!important;
+}
+html[data-theme="light"] body .logo,
+html[data-theme="light"] body .logo span,
+html[data-theme="light"] body .nav a,
+html[data-theme="light"] body .blackout-hero h1,
+html[data-theme="light"] body .blackout-hero h1 span:not(.outline),
+html[data-theme="light"] body .blackout-hero h1 .hero-period,
+html[data-theme="light"] body .section-top h2,
+html[data-theme="light"] body .contact h2,
+html[data-theme="light"] body .manifesto h2{color:var(--theme-heading)!important;-webkit-text-fill-color:var(--theme-heading)!important}
+html[data-theme="dark"] body .logo,
+html[data-theme="dark"] body .logo span,
+html[data-theme="dark"] body .nav a,
+html[data-theme="dark"] body .blackout-hero h1,
+html[data-theme="dark"] body .blackout-hero h1 span:not(.outline),
+html[data-theme="dark"] body .blackout-hero h1 .hero-period,
+html[data-theme="dark"] body .section-top h2,
+html[data-theme="dark"] body .contact h2,
+html[data-theme="dark"] body .manifesto h2{color:var(--theme-heading)!important;-webkit-text-fill-color:var(--theme-heading)!important}
+html[data-theme="light"] body .blackout-hero h1 .outline{
+  color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke-color:#777!important;
+}
+html[data-theme="dark"] body .blackout-hero h1 .outline{
+  color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke-color:#a8a8a2!important;
+}
+html[data-theme="light"] body .blackout-hero-top,
+html[data-theme="light"] body .blackout-hero-bottom,
+html[data-theme="light"] body .blackout-kicker,
+html[data-theme="light"] body .blackout-intro,
+html[data-theme="light"] body .section-top p,
+html[data-theme="light"] body .art-label,
+html[data-theme="light"] body .hero-note,
+html[data-theme="light"] body .top small,
+html[data-theme="light"] body .top-right,
+html[data-theme="light"] body .footer{color:var(--theme-secondary)!important}
+html[data-theme="dark"] body .blackout-hero-top,
+html[data-theme="dark"] body .blackout-hero-bottom,
+html[data-theme="dark"] body .blackout-kicker,
+html[data-theme="dark"] body .blackout-intro,
+html[data-theme="dark"] body .section-top p,
+html[data-theme="dark"] body .art-label,
+html[data-theme="dark"] body .hero-note,
+html[data-theme="dark"] body .top small,
+html[data-theme="dark"] body .top-right,
+html[data-theme="dark"] body .footer{color:var(--theme-secondary)!important}
+html[data-theme="light"] body .blackout-hero-art{background:#ecece6!important;border-color:#cecec6!important}
+html[data-theme="dark"] body .blackout-hero-art{background:#111111!important;border-color:#383838!important}
+html[data-theme="light"] body .hero-target-ring{border-color:rgba(35,45,31,.3)!important}
+html[data-theme="dark"] body .hero-target-ring{border-color:rgba(217,230,107,.35)!important}
+
+/* Catalog: separate canvas, cards, metadata, controls, and empty state */
+html[data-theme="light"] body #beats .filters .field,
+html[data-theme="light"] body #beats .field{
+  background:var(--theme-control)!important;color:var(--ink)!important;border-color:#c7c7c0!important;
+}
+html[data-theme="dark"] body #beats .filters .field,
+html[data-theme="dark"] body #beats .field{
+  background:var(--theme-control)!important;color:var(--ink)!important;border-color:#3b3b3b!important;
+}
+html[data-theme="light"] body #beats .field::placeholder,
+html[data-theme="light"] body #beats input::placeholder,
+html[data-theme="light"] body #beats textarea::placeholder{color:#696963!important;opacity:1}
+html[data-theme="dark"] body #beats .field::placeholder,
+html[data-theme="dark"] body #beats input::placeholder,
+html[data-theme="dark"] body #beats textarea::placeholder{color:#a0a09a!important;opacity:1}
+html[data-theme="light"] body #beats .field:focus,
+html[data-theme="light"] body #beats .field:focus-visible{background:var(--theme-control-focus)!important;border-color:#595952!important}
+html[data-theme="dark"] body #beats .field:focus,
+html[data-theme="dark"] body #beats .field:focus-visible{background:var(--theme-control-focus)!important;border-color:#a5a59d!important}
+html[data-theme="light"] body #beats select option{background:#fff!important;color:#151515!important}
+html[data-theme="dark"] body #beats select option{background:#111!important;color:#f2f2f0!important}
+html[data-theme="light"] body #beats .beat{
+  background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important;
+}
+html[data-theme="dark"] body #beats .beat{
+  background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important;
+}
+html[data-theme="light"] body #beats .beat:hover{background:var(--theme-hover)!important;border-color:#999990!important}
+html[data-theme="dark"] body #beats .beat:hover{background:var(--theme-hover)!important;border-color:#555!important}
+html[data-theme="light"] body #beats .beat-title h3,
+html[data-theme="light"] body #beats .beat-title,
+html[data-theme="light"] body #beats .beat-foot .listen,
+html[data-theme="light"] body #beats .empty{color:var(--ink)!important;-webkit-text-fill-color:initial}
+html[data-theme="dark"] body #beats .beat-title h3,
+html[data-theme="dark"] body #beats .beat-title,
+html[data-theme="dark"] body #beats .beat-foot .listen,
+html[data-theme="dark"] body #beats .empty{color:var(--ink)!important;-webkit-text-fill-color:initial}
+html[data-theme="light"] body #beats .price,
+html[data-theme="light"] body #beats .details{color:#666660!important}
+html[data-theme="dark"] body #beats .price,
+html[data-theme="dark"] body #beats .details{color:#a4a49e!important}
+html[data-theme="light"] body #beats .beat-foot{border-color:#d8d8d1!important}
+html[data-theme="dark"] body #beats .beat-foot{border-color:#292929!important}
+html[data-theme="light"] body #beats .seek{accent-color:#202020}
+html[data-theme="dark"] body #beats .seek{accent-color:#e9e9e2}
+html[data-theme="light"] body #beats .beat-foot .listen.inquiry{color:#191919!important}
+html[data-theme="dark"] body #beats .beat-foot .listen.inquiry{color:#f2f2f0!important}
+html[data-theme="light"] body #beats .beat-foot .listen.inquiry:hover{background:#151515!important;color:#fff!important}
+html[data-theme="dark"] body #beats .beat-foot .listen.inquiry:hover{background:#f2f2f0!important;color:#050505!important}
+
+/* Service, proof, FAQ, manifesto and contact surfaces */
+html[data-theme="light"] body .service-card,
+html[data-theme="light"] body .faq-list details,
+html[data-theme="light"] body .proof-grid>div{
+  background:#fafaf7!important;color:#171717!important;border-color:#cecec7!important;
+}
+html[data-theme="dark"] body .service-card,
+html[data-theme="dark"] body .faq-list details,
+html[data-theme="dark"] body .proof-grid>div{
+  background:#0b0b0b!important;color:#f2f2f0!important;border-color:#303030!important;
+}
+html[data-theme="light"] body .service-card h3,
+html[data-theme="light"] body .faq-list summary,
+html[data-theme="light"] body .proof-grid span,
+html[data-theme="light"] body .proof-grid strong{color:#171717!important}
+html[data-theme="dark"] body .service-card h3,
+html[data-theme="dark"] body .faq-list summary,
+html[data-theme="dark"] body .proof-grid span,
+html[data-theme="dark"] body .proof-grid strong{color:#f2f2f0!important}
+html[data-theme="light"] body .service-card p,
+html[data-theme="light"] body .service-card-top,
+html[data-theme="light"] body .service-card-bottom,
+html[data-theme="light"] body .faq-list details p,
+html[data-theme="light"] body .proof-note,
+html[data-theme="light"] body .manifesto p,
+html[data-theme="light"] body .contact-row{color:#62625c!important}
+html[data-theme="dark"] body .service-card p,
+html[data-theme="dark"] body .service-card-top,
+html[data-theme="dark"] body .service-card-bottom,
+html[data-theme="dark"] body .faq-list details p,
+html[data-theme="dark"] body .proof-note,
+html[data-theme="dark"] body .manifesto p,
+html[data-theme="dark"] body .contact-row{color:#a4a49e!important}
+html[data-theme="light"] body .manifesto{background:#e5e5df!important;color:#151515!important;border-color:#c9c9c2!important}
+html[data-theme="dark"] body .manifesto{background:#090909!important;color:#f2f2f0!important;border-color:#303030!important}
+html[data-theme="light"] body .marquee,
+html[data-theme="light"] body .blackout-marquee{background:#e7e7e1!important;color:#292925!important;border-color:#c9c9c2!important}
+html[data-theme="dark"] body .marquee,
+html[data-theme="dark"] body .blackout-marquee{background:#080808!important;color:#efefe8!important;border-color:#303030!important}
+html[data-theme="light"] body .blackout-marquee-track b{color:#66665f!important}
+html[data-theme="dark"] body .blackout-marquee-track b{color:#a7a79f!important}
+html[data-theme="light"] body .section-top,
+html[data-theme="light"] body .contact-row,
+html[data-theme="light"] body .footer{border-color:#c9c9c2!important}
+html[data-theme="dark"] body .section-top,
+html[data-theme="dark"] body .contact-row,
+html[data-theme="dark"] body .footer{border-color:#303030!important}
+
+/* Buttons and theme/language toggles */
+html[data-theme="light"] body .blackout-cta,
+html[data-theme="light"] body .kinetic-cta,
+html[data-theme="light"] body .pill,
+html[data-theme="light"] body .contact-actions .pill,
+html[data-theme="light"] body .modal-actions .pill,
+html[data-theme="light"] body .service-order{
+  background:#151515!important;color:#fff!important;border-color:#151515!important;
+}
+html[data-theme="dark"] body .blackout-cta,
+html[data-theme="dark"] body .kinetic-cta,
+html[data-theme="dark"] body .pill,
+html[data-theme="dark"] body .contact-actions .pill,
+html[data-theme="dark"] body .modal-actions .pill,
+html[data-theme="dark"] body .service-order{
+  background:#f2f2f0!important;color:#080808!important;border-color:#f2f2f0!important;
+}
+html[data-theme="light"] body .blackout-cta:hover,
+html[data-theme="light"] body .kinetic-cta:hover,
+html[data-theme="light"] body .pill:hover,
+html[data-theme="light"] body .contact-actions .pill:hover,
+html[data-theme="light"] body .modal-actions .pill:hover,
+html[data-theme="light"] body .service-order:hover{
+  background:#fff!important;color:#111!important;border-color:#111!important;
+}
+html[data-theme="dark"] body .blackout-cta:hover,
+html[data-theme="dark"] body .kinetic-cta:hover,
+html[data-theme="dark"] body .pill:hover,
+html[data-theme="dark"] body .contact-actions .pill:hover,
+html[data-theme="dark"] body .modal-actions .pill:hover,
+html[data-theme="dark"] body .service-order:hover{
+  background:#151515!important;color:#f2f2f0!important;border-color:#f2f2f0!important;
+}
+html[data-theme="light"] body .theme-switch,
+html[data-theme="light"] body .lang-switch{background:#fafaf7!important;color:#171717!important;border-color:#bdbdb5!important}
+html[data-theme="dark"] body .theme-switch,
+html[data-theme="dark"] body .lang-switch{background:#0b0b0b!important;color:#f2f2f0!important;border-color:#414141!important}
+html[data-theme="light"] body .theme-switch:hover,
+html[data-theme="light"] body .lang-switch:hover{background:#151515!important;color:#fff!important;border-color:#151515!important}
+html[data-theme="dark"] body .theme-switch:hover,
+html[data-theme="dark"] body .lang-switch:hover{background:#f2f2f0!important;color:#080808!important;border-color:#f2f2f0!important}
+
+/* Player, inquiry modal, fields, status messages */
+html[data-theme="light"] body #globalPlayer,
+html[data-theme="light"] body .global-player{background:#fafaf7!important;color:#151515!important;border-color:#c9c9c2!important}
+html[data-theme="dark"] body #globalPlayer,
+html[data-theme="dark"] body .global-player{background:#0b0b0b!important;color:#f2f2f0!important;border-color:#303030!important}
+html[data-theme="light"] body .global-track-title,
+html[data-theme="light"] body .global-toggle,
+html[data-theme="light"] body .global-close{color:#151515!important}
+html[data-theme="dark"] body .global-track-title,
+html[data-theme="dark"] body .global-toggle,
+html[data-theme="dark"] body .global-close{color:#f2f2f0!important}
+html[data-theme="light"] body .global-track-meta,
+html[data-theme="light"] body .global-time{color:#62625c!important}
+html[data-theme="dark"] body .global-track-meta,
+html[data-theme="dark"] body .global-time{color:#a4a49e!important}
+html[data-theme="light"] body #globalSeek{accent-color:#151515}
+html[data-theme="dark"] body #globalSeek{accent-color:#f2f2f0}
+html[data-theme="light"] body .inquiry-modal{background:#fafaf7!important;color:#151515!important;border-color:#cecec7!important}
+html[data-theme="dark"] body .inquiry-modal{background:#101010!important;color:#f2f2f0!important;border-color:#3c3c3c!important}
+html[data-theme="light"] body .inquiry-modal h2,
+html[data-theme="light"] body .modal-head h2,
+html[data-theme="light"] body .price-list b{color:#151515!important}
+html[data-theme="dark"] body .inquiry-modal h2,
+html[data-theme="dark"] body .modal-head h2,
+html[data-theme="dark"] body .price-list b{color:#f2f2f0!important}
+html[data-theme="light"] body .modal-copy,
+html[data-theme="light"] body .modal-note,
+html[data-theme="light"] body .license-label,
+html[data-theme="light"] body .price-list>div span{color:#62625c!important}
+html[data-theme="dark"] body .modal-copy,
+html[data-theme="dark"] body .modal-note,
+html[data-theme="dark"] body .license-label,
+html[data-theme="dark"] body .price-list>div span{color:#a4a49e!important}
+html[data-theme="light"] body .price-list,
+html[data-theme="light"] body .price-list>div{border-color:#d5d5ce!important}
+html[data-theme="dark"] body .price-list,
+html[data-theme="dark"] body .price-list>div{border-color:#303030!important}
+html[data-theme="light"] body .modal-close{background:#e8e8e2!important;color:#151515!important;border-color:#c9c9c2!important}
+html[data-theme="dark"] body .modal-close{background:#202020!important;color:#f2f2f0!important;border-color:#404040!important}
+html[data-theme="light"] body .inquiry-text,
+html[data-theme="light"] body .license-select,
+html[data-theme="light"] body .modal-actions .field{background:#fff!important;color:#151515!important;border-color:#c9c9c2!important}
+html[data-theme="dark"] body .inquiry-text,
+html[data-theme="dark"] body .license-select,
+html[data-theme="dark"] body .modal-actions .field{background:#080808!important;color:#f2f2f0!important;border-color:#414141!important}
+html[data-theme="light"] body .inquiry-text::placeholder,
+html[data-theme="light"] body .modal-actions .field::placeholder{color:#6b6b65!important;opacity:1}
+html[data-theme="dark"] body .inquiry-text::placeholder,
+html[data-theme="dark"] body .modal-actions .field::placeholder{color:#a4a49e!important;opacity:1}
+html[data-theme="light"] body .toast{background:#151515!important;color:#fff!important;border-color:#151515!important}
+html[data-theme="dark"] body .toast{background:#f2f2f0!important;color:#080808!important;border-color:#f2f2f0!important}
+
+/* Visible keyboard focus without changing the resting design */
+html[data-theme="light"] body button:focus-visible,
+html[data-theme="light"] body a:focus-visible,
+html[data-theme="light"] body input:focus-visible,
+html[data-theme="light"] body select:focus-visible,
+html[data-theme="light"] body textarea:focus-visible{
+  outline:2px solid #56564f!important;outline-offset:3px;
+}
+html[data-theme="dark"] body button:focus-visible,
+html[data-theme="dark"] body a:focus-visible,
+html[data-theme="dark"] body input:focus-visible,
+html[data-theme="dark"] body select:focus-visible,
+html[data-theme="dark"] body textarea:focus-visible{
+  outline:2px solid #d9e66b!important;outline-offset:3px;
+}
+html[data-theme="light"] body ::selection{background:#dce5d6;color:#151515}
+html[data-theme="dark"] body ::selection{background:#414a2b;color:#fff}
+@media(prefers-reduced-motion:reduce){
+  html.theme-switching,html.theme-switching body,html.theme-switching body *{
+    transition:none!important;
+  }
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#services" data-i="servicesNav">SERVICES</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button><button class="theme-switch" id="themeSwitch" type="button" aria-label="Switch color theme" aria-pressed="false">☾ DARK</button></nav></header>
@@ -1633,6 +1948,6 @@ document.querySelectorAll('.service-order').forEach(button=>button.addEventListe
 function closeInquiry(){document.getElementById('inquiryBackdrop').classList.remove('open')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeInquiry();const player=document.getElementById('globalPlayer');if(player&&player.classList.contains('is-active'))document.getElementById('globalClose').click()}});
 document.getElementById('closeInquiry').addEventListener('click',closeInquiry);document.getElementById('inquiryBackdrop').addEventListener('click',e=>{if(e.target.id==='inquiryBackdrop')closeInquiry()});document.getElementById('copyInquiry').addEventListener('click',async()=>{const field=document.getElementById('inquiryText');try{await navigator.clipboard.writeText(field.value);showToast(currentLang==='ru'?'СООБЩЕНИЕ СКОПИРОВАНО':'MESSAGE COPIED')}catch(e){field.focus();field.select();try{document.execCommand('copy');showToast(currentLang==='ru'?'СООБЩЕНИЕ СКОПИРОВАНО':'MESSAGE COPIED')}catch(_){showToast(currentLang==='ru'?'ВЫДЕЛИ И СКОПИРУЙ ТЕКСТ':'SELECT AND COPY THE TEXT')}}});
-[search,sort].forEach(el=>el.addEventListener(el===search?'input':'change',render));const translations={en:{heroTitle:'PREMIUM BEATS<br>FOR CREATORS',heroSub:'High quality beats. No limits.<br>Find your sound.',heroCta:'EXPLORE BEATS',catalogTitle:'CATALOG',beats:'BEATS',about:'ABOUT',contact:'CONTACT',servicesNav:'SERVICES',available:'AVAILABLE FOR WORK ↗',eyebrow:'Independent producer / original beats',intro:'Original Trap, Drill and Hip-Hop beats, instrumentals and custom beats for artists. Browse the catalog and find a sound for your next release.',find:'BROWSE BEATS',norules:'ORIGINAL BEATS<br>UPDATED REGULARLY',latest:'The',productions:'catalog',vol:'VOL. 001<br>SELECTED BEATS / 2026',madefor:'About',outsiders:'DEZZ1RE.',manifesto:'Independent producer making original beats and instrumentals. For placements, custom beats and collaborations, get in touch.',keep:'DEZZ1RE STUDIO® / ORIGINAL BEATS.',got:"Let's",mind:'work.',connect:'INSTAGRAM DM',instagram:'INSTAGRAM DM ↗',builtFor:'Built for',artists:'artists.',proofLabel:'INDEPENDENT SOUND<br>DIRECT COLLABORATION',proof01:'ORIGINAL PRODUCTION',proof02:'BEAT LICENSING',proof03:'CUSTOM BEATS',proof04:'DIRECT CONTACT',proofNote:'Direct collaboration without intermediaries.',servicesTitle:'Services',servicesLabel:'CUSTOM PRODUCTION<br>POST-PRODUCTION',serviceCustomCategory:'CUSTOM PRODUCTION',serviceCustomTitle:'Custom beat.',serviceCustomCopy:'Original production built from scratch around your sound and direction.',serviceCustomPrice:'FROM 5,000 ₽ / $60',serviceMixCategory:'POST-PRODUCTION',serviceMixTitle:'Mix & master.',serviceMixCopy:'Mixing and mastering to get your track ready for release.',serviceMixPrice:'5,000 ₽ / $60',serviceOrder:'ASK ABOUT SERVICE ↗',faqTitle:'FAQ<span>.</span>',faqLabel:'LICENSES<br>BEFORE YOU BUY',faqQ1:'Can I release a track on streaming platforms?',faqA1:'Streaming rights depend on the license you choose. Confirm the permitted platforms, usage limits and monetization conditions before releasing your track.',faqQ2:'What is included in the basic license?',faqA2:'The exact files and usage rights depend on the selected format. MP3 and WAV licenses include different delivery formats. Ask before purchase if you need stems or specific commercial rights.',faqQ3:'Can I order an exclusive or custom beat?',faqA3:'Yes. Contact DEZZ1RE to discuss a custom production or exclusive arrangement. Availability, price and terms are confirmed individually before payment.',faqQ4:'How do I buy a beat?',faqA4:'Choose Buy on a beat card, select a license, then send the prepared message through Instagram or Telegram. Payment is not processed on this website.'},ru:{heroTitle:'ПРЕМИАЛЬНЫЕ БИТЫ<br>ДЛЯ АРТИСТОВ',heroSub:'Авторский звук. Без ограничений.<br>Найди своё звучание.',heroCta:'СМОТРЕТЬ БИТЫ',catalogTitle:'КАТАЛОГ',beats:'БИТЫ',about:'О НАС',contact:'КОНТАКТЫ',servicesNav:'УСЛУГИ',available:'ОТКРЫТ К СОТРУДНИЧЕСТВУ ↗',eyebrow:'Независимый продюсер / авторские биты',intro:'Авторские Trap, Drill и Hip-Hop биты, инструменталы и биты на заказ. Выбирай звук для своего следующего релиза в каталоге.',find:'СМОТРЕТЬ БИТЫ',norules:'АВТОРСКИЕ БИТЫ<br>НОВЫЕ РАБОТЫ РЕГУЛЯРНО',latest:'Каталог',productions:'битов',vol:'ВЫПУСК 001<br>ИЗБРАННЫЕ БИТЫ / 2026',madefor:'О',outsiders:'DEZZ1RE.',manifesto:'Независимый продюсер. Авторские биты и инструменталы. По вопросам лицензий, битов на заказ и совместной работы напиши мне.',keep:'DEZZ1RE STUDIO® / АВТОРСКИЕ БИТЫ.',got:'Давай',mind:'работать.',connect:'НАПИСАТЬ В INSTAGRAM',instagram:'INSTAGRAM DM ↗',builtFor:'Создано для',artists:'артистов.',proofLabel:'НЕЗАВИСИМОЕ ЗВУЧАНИЕ<br>ПРЯМОЕ СОТРУДНИЧЕСТВО',proof01:'ОРИГИНАЛЬНЫЙ ПРОДАКШН',proof02:'ЛИЦЕНЗИИ НА БИТЫ',proof03:'БИТЫ НА ЗАКАЗ',proof04:'ПРЯМАЯ СВЯЗЬ',proofNote:'Прямое сотрудничество без посредников.',servicesTitle:'Услуги',servicesLabel:'СОЗДАНИЕ БИТОВ<br>ПОСТПРОДАКШН',serviceCustomCategory:'БИТ НА ЗАКАЗ',serviceCustomTitle:'Бит с нуля.',serviceCustomCopy:'Авторский бит с нуля под твой звук и направление.',serviceCustomPrice:'ОТ 5 000 ₽ / $60',serviceMixCategory:'ПОСТПРОДАКШН',serviceMixTitle:'Сведение и мастеринг.',serviceMixCopy:'Подготовка трека к релизу: сведение и мастеринг.',serviceMixPrice:'5 000 ₽ / $60',serviceOrder:'ОБСУДИТЬ УСЛУГУ ↗',faqTitle:'Частые вопросы<span>.</span>',faqLabel:'ЛИЦЕНЗИИ<br>ПЕРЕД ПОКУПКОЙ',faqQ1:'Можно ли выпускать трек на стримингах?',faqA1:'Это зависит от выбранной лицензии. Перед релизом уточни разрешённые платформы, ограничения использования и условия монетизации.',faqQ2:'Что входит в базовую лицензию?',faqA2:'Набор файлов и права использования зависят от выбранного формата. Лицензии MP3 и WAV отличаются форматом материалов. Если нужны дорожки по отдельности или особые коммерческие права, уточни это перед покупкой.',faqQ3:'Можно ли заказать эксклюзивный бит?',faqA3:'Да. Напиши DEZZ1RE, чтобы обсудить бит на заказ или эксклюзивные условия. Доступность, стоимость и условия согласовываются индивидуально до оплаты.',faqQ4:'Как купить бит?',faqA4:'Нажми «Купить» в карточке бита, выбери формат и отправь подготовленное сообщение через Instagram или Telegram. Оплата на сайте не принимается.'}};function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang;document.querySelectorAll('[data-i]').forEach(el=>{const value=translations[lang][el.dataset.i];if(value!==undefined)el.innerHTML=value;});document.getElementById('langSwitch').textContent=lang==='en'?'RU ↗':'EN ↗';document.querySelector('[data-newest]').textContent=lang==='ru'?'СНАЧАЛА НОВЫЕ':'NEWEST FIRST';document.querySelector('[data-bpm]').textContent=lang==='ru'?'СНАЧАЛА МЕДЛЕННЕЕ':'BPM: LOW TO HIGH';search.placeholder=lang==='ru'?'ПОИСК ПО КАТАЛОГУ...':'SEARCH THE CATALOG...';search.setAttribute('aria-label',lang==='ru'?'Поиск битов':'Search beats');render()}document.getElementById('langSwitch').addEventListener('click',()=>setLanguage(currentLang==='en'?'ru':'en'));const themeSwitch=document.getElementById('themeSwitch');const root=document.documentElement;let themeTransitionTimer=0;function setTheme(theme,animate=false){const selected=theme==='dark'?'dark':'light';if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){root.classList.add('theme-switching');if(themeTransitionTimer)window.clearTimeout(themeTransitionTimer);themeTransitionTimer=window.setTimeout(()=>root.classList.remove('theme-switching'),420)}else{root.classList.remove('theme-switching')}root.dataset.theme=selected;const dark=selected==='dark';themeSwitch.textContent=dark?'☀ LIGHT':'☾ DARK';themeSwitch.setAttribute('aria-pressed',String(dark));const russian=typeof currentLang!=='undefined'&&currentLang==='ru';themeSwitch.setAttribute('aria-label',dark?(russian?'Переключить на светлую тему':'Switch to light theme'):(russian?'Переключить на тёмную тему':'Switch to dark theme'));const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.content=dark?'#050505':'#ededed';try{localStorage.setItem('dezz1re-theme-blackout',selected)}catch(e){}}let savedTheme='dark';try{savedTheme=localStorage.getItem('dezz1re-theme-blackout')||'dark'}catch(e){}setTheme(savedTheme,false);themeSwitch.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark',true));document.querySelector('.hero-metal-object').classList.add('hero-use-sprite');let motionObserver=null;function refreshMotionTargets(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in window))return;const targets=document.querySelectorAll('.blackout-hero-copy>*,.blackout-hero-art,.blackout-hero-bottom,.section-top,.proof-grid>div,.service-card,.faq-list details,#contact .contact-row,.manifesto-inner>*,#beats .beat');if(!targets.length)return;root.classList.add('motion-ready');if(!motionObserver)motionObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');motionObserver.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -24px 0px'});targets.forEach((el,i)=>{if(el.dataset.motionObserved==='true')return;el.classList.add('motion-reveal');el.style.setProperty('--motion-delay',Math.min(i%6,5)*55+'ms');el.dataset.motionObserved='true';motionObserver.observe(el)})}function initMotion(){refreshMotionTargets()}initMotion();setLanguage('en');
+[search,sort].forEach(el=>el.addEventListener(el===search?'input':'change',render));const translations={en:{heroTitle:'PREMIUM BEATS<br>FOR CREATORS',heroSub:'High quality beats. No limits.<br>Find your sound.',heroCta:'EXPLORE BEATS',catalogTitle:'CATALOG',beats:'BEATS',about:'ABOUT',contact:'CONTACT',servicesNav:'SERVICES',available:'AVAILABLE FOR WORK ↗',eyebrow:'Independent producer / original beats',intro:'Original Trap, Drill and Hip-Hop beats, instrumentals and custom beats for artists. Browse the catalog and find a sound for your next release.',find:'BROWSE BEATS',norules:'ORIGINAL BEATS<br>UPDATED REGULARLY',latest:'The',productions:'catalog',vol:'VOL. 001<br>SELECTED BEATS / 2026',madefor:'About',outsiders:'DEZZ1RE.',manifesto:'Independent producer making original beats and instrumentals. For placements, custom beats and collaborations, get in touch.',keep:'DEZZ1RE STUDIO® / ORIGINAL BEATS.',got:"Let's",mind:'work.',connect:'INSTAGRAM DM',instagram:'INSTAGRAM DM ↗',builtFor:'Built for',artists:'artists.',proofLabel:'INDEPENDENT SOUND<br>DIRECT COLLABORATION',proof01:'ORIGINAL PRODUCTION',proof02:'BEAT LICENSING',proof03:'CUSTOM BEATS',proof04:'DIRECT CONTACT',proofNote:'Direct collaboration without intermediaries.',servicesTitle:'Services',servicesLabel:'CUSTOM PRODUCTION<br>POST-PRODUCTION',serviceCustomCategory:'CUSTOM PRODUCTION',serviceCustomTitle:'Custom beat.',serviceCustomCopy:'Original production built from scratch around your sound and direction.',serviceCustomPrice:'FROM 5,000 ₽ / $60',serviceMixCategory:'POST-PRODUCTION',serviceMixTitle:'Mix & master.',serviceMixCopy:'Mixing and mastering to get your track ready for release.',serviceMixPrice:'5,000 ₽ / $60',serviceOrder:'ASK ABOUT SERVICE ↗',faqTitle:'FAQ<span>.</span>',faqLabel:'LICENSES<br>BEFORE YOU BUY',faqQ1:'Can I release a track on streaming platforms?',faqA1:'Streaming rights depend on the license you choose. Confirm the permitted platforms, usage limits and monetization conditions before releasing your track.',faqQ2:'What is included in the basic license?',faqA2:'The exact files and usage rights depend on the selected format. MP3 and WAV licenses include different delivery formats. Ask before purchase if you need stems or specific commercial rights.',faqQ3:'Can I order an exclusive or custom beat?',faqA3:'Yes. Contact DEZZ1RE to discuss a custom production or exclusive arrangement. Availability, price and terms are confirmed individually before payment.',faqQ4:'How do I buy a beat?',faqA4:'Choose Buy on a beat card, select a license, then send the prepared message through Instagram or Telegram. Payment is not processed on this website.'},ru:{heroTitle:'ПРЕМИАЛЬНЫЕ БИТЫ<br>ДЛЯ АРТИСТОВ',heroSub:'Авторский звук. Без ограничений.<br>Найди своё звучание.',heroCta:'СМОТРЕТЬ БИТЫ',catalogTitle:'КАТАЛОГ',beats:'БИТЫ',about:'О НАС',contact:'КОНТАКТЫ',servicesNav:'УСЛУГИ',available:'ОТКРЫТ К СОТРУДНИЧЕСТВУ ↗',eyebrow:'Независимый продюсер / авторские биты',intro:'Авторские Trap, Drill и Hip-Hop биты, инструменталы и биты на заказ. Выбирай звук для своего следующего релиза в каталоге.',find:'СМОТРЕТЬ БИТЫ',norules:'АВТОРСКИЕ БИТЫ<br>НОВЫЕ РАБОТЫ РЕГУЛЯРНО',latest:'Каталог',productions:'битов',vol:'ВЫПУСК 001<br>ИЗБРАННЫЕ БИТЫ / 2026',madefor:'О',outsiders:'DEZZ1RE.',manifesto:'Независимый продюсер. Авторские биты и инструменталы. По вопросам лицензий, битов на заказ и совместной работы напиши мне.',keep:'DEZZ1RE STUDIO® / АВТОРСКИЕ БИТЫ.',got:'Давай',mind:'работать.',connect:'НАПИСАТЬ В INSTAGRAM',instagram:'INSTAGRAM DM ↗',builtFor:'Создано для',artists:'артистов.',proofLabel:'НЕЗАВИСИМОЕ ЗВУЧАНИЕ<br>ПРЯМОЕ СОТРУДНИЧЕСТВО',proof01:'ОРИГИНАЛЬНЫЙ ПРОДАКШН',proof02:'ЛИЦЕНЗИИ НА БИТЫ',proof03:'БИТЫ НА ЗАКАЗ',proof04:'ПРЯМАЯ СВЯЗЬ',proofNote:'Прямое сотрудничество без посредников.',servicesTitle:'Услуги',servicesLabel:'СОЗДАНИЕ БИТОВ<br>ПОСТПРОДАКШН',serviceCustomCategory:'БИТ НА ЗАКАЗ',serviceCustomTitle:'Бит с нуля.',serviceCustomCopy:'Авторский бит с нуля под твой звук и направление.',serviceCustomPrice:'ОТ 5 000 ₽ / $60',serviceMixCategory:'ПОСТПРОДАКШН',serviceMixTitle:'Сведение и мастеринг.',serviceMixCopy:'Подготовка трека к релизу: сведение и мастеринг.',serviceMixPrice:'5 000 ₽ / $60',serviceOrder:'ОБСУДИТЬ УСЛУГУ ↗',faqTitle:'Частые вопросы<span>.</span>',faqLabel:'ЛИЦЕНЗИИ<br>ПЕРЕД ПОКУПКОЙ',faqQ1:'Можно ли выпускать трек на стримингах?',faqA1:'Это зависит от выбранной лицензии. Перед релизом уточни разрешённые платформы, ограничения использования и условия монетизации.',faqQ2:'Что входит в базовую лицензию?',faqA2:'Набор файлов и права использования зависят от выбранного формата. Лицензии MP3 и WAV отличаются форматом материалов. Если нужны дорожки по отдельности или особые коммерческие права, уточни это перед покупкой.',faqQ3:'Можно ли заказать эксклюзивный бит?',faqA3:'Да. Напиши DEZZ1RE, чтобы обсудить бит на заказ или эксклюзивные условия. Доступность, стоимость и условия согласовываются индивидуально до оплаты.',faqQ4:'Как купить бит?',faqA4:'Нажми «Купить» в карточке бита, выбери формат и отправь подготовленное сообщение через Instagram или Telegram. Оплата на сайте не принимается.'}};function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang;document.querySelectorAll('[data-i]').forEach(el=>{const value=translations[lang][el.dataset.i];if(value!==undefined)el.innerHTML=value;});document.getElementById('langSwitch').textContent=lang==='en'?'RU ↗':'EN ↗';const themeButton=document.getElementById('themeSwitch');if(themeButton){const isDark=document.documentElement.dataset.theme==='dark';themeButton.setAttribute('aria-label',isDark?(lang==='ru'?'Переключить на светлую тему':'Switch to light theme'):(lang==='ru'?'Переключить на тёмную тему':'Switch to dark theme'));}document.querySelector('[data-newest]').textContent=lang==='ru'?'СНАЧАЛА НОВЫЕ':'NEWEST FIRST';document.querySelector('[data-bpm]').textContent=lang==='ru'?'СНАЧАЛА МЕДЛЕННЕЕ':'BPM: LOW TO HIGH';search.placeholder=lang==='ru'?'ПОИСК ПО КАТАЛОГУ...':'SEARCH THE CATALOG...';search.setAttribute('aria-label',lang==='ru'?'Поиск битов':'Search beats');render()}document.getElementById('langSwitch').addEventListener('click',()=>setLanguage(currentLang==='en'?'ru':'en'));const themeSwitch=document.getElementById('themeSwitch');const root=document.documentElement;let themeTransitionTimer=0;function setTheme(theme,animate=false){const selected=theme==='dark'?'dark':'light';if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){root.classList.add('theme-switching');if(themeTransitionTimer)window.clearTimeout(themeTransitionTimer);themeTransitionTimer=window.setTimeout(()=>root.classList.remove('theme-switching'),420)}else{root.classList.remove('theme-switching')}root.dataset.theme=selected;const dark=selected==='dark';themeSwitch.textContent=dark?'☀ LIGHT':'☾ DARK';themeSwitch.setAttribute('aria-pressed',String(dark));const russian=typeof currentLang!=='undefined'&&currentLang==='ru';themeSwitch.setAttribute('aria-label',dark?(russian?'Переключить на светлую тему':'Switch to light theme'):(russian?'Переключить на тёмную тему':'Switch to dark theme'));const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.content=dark?'#050505':'#ededed';try{localStorage.setItem('dezz1re-theme-blackout',selected)}catch(e){}}let savedTheme='dark';try{savedTheme=localStorage.getItem('dezz1re-theme-blackout')||'dark'}catch(e){}setTheme(savedTheme,false);themeSwitch.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark',true));document.querySelector('.hero-metal-object').classList.add('hero-use-sprite');let motionObserver=null;function refreshMotionTargets(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in window))return;const targets=document.querySelectorAll('.blackout-hero-copy>*,.blackout-hero-art,.blackout-hero-bottom,.section-top,.proof-grid>div,.service-card,.faq-list details,#contact .contact-row,.manifesto-inner>*,#beats .beat');if(!targets.length)return;root.classList.add('motion-ready');if(!motionObserver)motionObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');motionObserver.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -24px 0px'});targets.forEach((el,i)=>{if(el.dataset.motionObserved==='true')return;el.classList.add('motion-reveal');el.style.setProperty('--motion-delay',Math.min(i%6,5)*55+'ms');el.dataset.motionObserved='true';motionObserver.observe(el)})}function initMotion(){refreshMotionTargets()}initMotion();setLanguage('en');
 
 </script></body></html>
