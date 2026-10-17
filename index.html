@@ -406,6 +406,24 @@ body{padding-bottom:0}
   color:#1d1d1f!important;
   border-color:#1d1d1f!important;
 }
+
+/* Mobile responsive fixes */
+html,body{overflow-x:hidden}
+@media(max-width:768px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .faq .section-top{align-items:flex-start;gap:12px;flex-direction:column}
+  .faq .section-top p{display:none}
+  .faq-list summary{font-size:clamp(24px,4vw,28px);line-height:1.12;gap:14px}
+  .faq-list summary span:first-child{min-width:0;overflow-wrap:break-word;word-break:normal}
+  .faq-list summary span:last-child{flex:0 0 auto}
+  .contact-row{display:flex;flex-direction:column;align-items:stretch;gap:24px}
+  .contact-row h2{width:100%;max-width:100%;font-size:clamp(52px,12vw,84px);overflow-wrap:break-word;word-break:normal}
+  .contact-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:none;margin:0;padding:0}
+  .contact-actions .pill{display:flex;width:100%;max-width:100%;flex:0 0 auto;margin:0;justify-content:space-between}
+  .hero h1,.section-top h2,.manifesto h2{max-width:100%;font-size:clamp(42px,12vw,100px);overflow-wrap:break-word;word-break:normal}
+  .hero h1{font-size:clamp(64px,17vw,132px)}
+}
+
 </style></head>
 <body>
 <header class="shell top"><a class="logo" href="#top">DEZZ1RE <span>STUDIO</span><small>INDEPENDENT SOUND / EST. 2026</small></a><nav class="nav"><a href="#beats" data-i="beats">BEATS</a><a href="#about" data-i="about">ABOUT</a><a href="#contact" data-i="contact">CONTACT</a><button class="lang-switch" id="langSwitch" type="button">RU ↗</button></nav><div class="top-right">BERLIN / ONLINE<b data-i="available">AVAILABLE FOR WORK ↗</b></div></header>
