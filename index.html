@@ -781,7 +781,20 @@ const beats=[
 {title:"FREEZE",genre:"OTHER",bpm:128,price:"ASK",symbol:"FZ",index:"002",style:"black",audio:"FREEZE 128 DEZZ1RE 2SVN.mp3"},
 {title:"LIFE",genre:"OTHER",bpm:153,price:"ASK",symbol:"L//",index:"003",style:"pink",audio:"LIFE 153 DEZZ1RE.mp3"},
 {title:"MDM",genre:"OTHER",bpm:155,price:"ASK",symbol:"MDM",index:"004",style:"blue",audio:"MDM 155 DEZZ1RE.mp3"},
-{title:"MED",genre:"OTHER",bpm:142,price:"ASK",symbol:"MED",index:"005",style:"white",audio:"MED 142 DEZZ1RE.mp3"}];
+{title:"MED",genre:"OTHER",bpm:142,price:"ASK",symbol:"MED",index:"005",style:"white",audio:"MED 142 DEZZ1RE.mp3"},
+{title:"2SWAG",genre:"OTHER",bpm:138,price:"ASK",symbol:"2S",index:"006",style:"lime",audio:"2SWAG 138 DEZZ1RE.mp3"},
+{title:"CRUSH",genre:"OTHER",bpm:168,price:"ASK",symbol:"CR",index:"007",style:"pink",audio:"CRUSH 168 DEZZ1RE.mp3"},
+{title:"GETHIGH",genre:"OTHER",bpm:144,price:"ASK",symbol:"GH",index:"008",style:"blue",audio:"GETHIGH 144 DEZZ1RE (1).mp3"},
+{title:"MAJ",genre:"OTHER",bpm:140,price:"ASK",symbol:"MAJ",index:"009",style:"white",audio:"MAJ 140 DEZZ1RE.mp3"},
+{title:"SKILL",genre:"OTHER",bpm:148,price:"ASK",symbol:"SK",index:"010",style:"black",audio:"SKILL 148 DEZZ1RE REX (1).mp3"},
+{title:"SLAY",genre:"OTHER",bpm:150,price:"ASK",symbol:"SL",index:"011",style:"lime",audio:"SLAY 150 DEZZ1RE.mp3"},
+{title:"SNOW",genre:"OTHER",bpm:170,price:"ASK",symbol:"SN",index:"012",style:"blue",audio:"SNOW 170 DEZZ1RE.mp3"},
+{title:"SRT",genre:"OTHER",bpm:138,price:"ASK",symbol:"SRT",index:"013",style:"pink",audio:"SRT 138 DEZZ1RE.mp3"},
+{title:"DREAMZ",genre:"OTHER",bpm:170,price:"ASK",symbol:"DR",index:"014",style:"white",audio:"dreamz 170 bpm bmaj (dezz1re + @en...mp3"},
+{title:"GETUP",genre:"OTHER",bpm:150,price:"ASK",symbol:"GU",index:"015",style:"black",audio:"getup 150 emin dezz1re.mp3"},
+{title:"KULAK",genre:"OTHER",bpm:142,price:"ASK",symbol:"KU",index:"016",style:"lime",audio:"kulak 142 cmin (dezz1re + enosonek)....mp3"},
+{title:"OVERTIME",genre:"OTHER",bpm:135,price:"ASK",symbol:"OT",index:"017",style:"pink",audio:"overtime 135 d#min dezz1re.mp3"},
+{title:"PACIFIC",genre:"OTHER",bpm:147,price:"ASK",symbol:"PA",index:"018",style:"blue",audio:"pacific 147 c#min (dezz1re) (1).mp3"}];
 let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
 function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork '+b.style+'"><span class="cover-meta">DEZZ1RE STUDIO <i> / </i> 2026</span><span class="cover-orbit" aria-hidden="true"></span><span class="serial">DZR_'+b.index+'</span><span class="glyph">'+b.symbol+'</span><span class="genre">UNDERGROUND AUDIO</span><span class="cover-coordinates">52°31' + "'" + 'N / 13°24' + "'" + 'E</span></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+b.genre+' / '+b.bpm+' BPM</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURI(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; ПРЕВЬЮ':'▶ &nbsp; PREVIEW')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
 let activeAudio=null,activeButton=null;
