@@ -1054,7 +1054,17 @@ body{background:#050505!important;color:#f2f2f2!important;font-family:var(--sans
 #beats .filters{display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:12px;align-items:center;border:0;margin:0 0 18px}
 #beats .field{height:36px;padding:0 11px;background:#080808!important;border:0!important;border-bottom:1px solid #444!important;border-radius:0!important;color:#eaeaea!important;font:8px var(--mono);letter-spacing:.7px}
 #beats .field::placeholder{color:#999!important;opacity:1}#beats .field:focus{background:#0b0b0b!important;border-bottom-color:#eee!important}#beats select option{background:#080808;color:#eee}
-#beats .beats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;border:0!important}
+#beats .beats{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:12px!important;border:0!important}
+#beats .beat:nth-child(-n+3){grid-column:span 2}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .cover-title{font-size:clamp(12px,1.35vw,19px)!important;top:9%!important;letter-spacing:-.045em!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .cover-bpm{font-size:7px!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .cover-plus{right:8px!important;bottom:6px!important;font-size:17px!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .beat-body{padding:8px!important;gap:6px!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .beat-title{display:block!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .beat-title .price{display:none!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .details{display:none!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .beat-foot{gap:5px!important}
+#beats .beat:nth-child(n+4):nth-child(-n+9) .listen{padding:7px 3px!important;font-size:6px!important;letter-spacing:0!important}
 #beats .beat{display:flex!important;flex-direction:column!important;min-width:0;border:1px solid #303030!important;background:#060606!important;border-radius:0!important;overflow:hidden;transition:border-color .22s,transform .22s!important}
 #beats .beat:hover{border-color:#777!important;background:#080808!important;transform:translateY(-2px)!important;box-shadow:none!important}
 #beats .cover.artwork{width:100%!important;height:auto!important;aspect-ratio:1/1!important;position:relative!important;display:block!important;overflow:hidden!important;background:#030303!important;color:#eee!important;border:0!important;border-bottom:1px solid #303030!important;isolation:isolate}
@@ -1129,7 +1139,11 @@ html[data-theme="light"] .blackout-marquee{background:#050505!important;color:#e
 @media(max-width:430px){
  .shell{padding-left:15px;padding-right:15px}.blackout-hero-top span:last-child{display:none}.blackout-hero-top{justify-content:flex-start}
  .blackout-hero-copy{min-height:265px}.blackout-hero h1{font-size:clamp(27px,7.5vw,36px)}
- #beats .filters{grid-template-columns:minmax(0,1fr) 104px}#beats .beats{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+ #beats .filters{grid-template-columns:minmax(0,1fr) 104px}#beats .beats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #beats .beat:nth-child(-n+3){grid-column:span 2}
+ #beats .beat:nth-child(n+4):nth-child(-n+9) .cover-title{font-size:clamp(17px,5vw,26px)!important}
+ #beats .beat:nth-child(n+4):nth-child(-n+9) .beat-body{padding:8px!important}
+ #beats .beat:nth-child(n+4):nth-child(-n+9) .listen{font-size:6px!important}
  #beats .cover.artwork{aspect-ratio:1.05/1!important}#beats .cover.artwork .cover-title{font-size:clamp(28px,8vw,40px)!important;top:10%!important}
  #beats .cover.artwork .cover-meta{font-size:6px!important}#beats .cover.artwork .cover-object{inset:18% 7% 9%!important}
  #beats .cover.artwork .cover-bpm{font-size:7px!important}#beats .cover.artwork .cover-serial{font-size:6px!important}
@@ -1148,6 +1162,8 @@ html[data-theme="light"] .blackout-marquee{background:#050505!important;color:#e
 /* Actual chrome objects from the approved visual reference */
 .blackout-hero-art .hero-metal-object.hero-use-sprite{position:absolute!important;top:50%!important;left:54%!important;width:min(100%,560px)!important;height:auto!important;aspect-ratio:1.8/1!important;right:auto!important;bottom:auto!important;transform:translate(-32%,-50%)!important;background-image:url('assets/hero-chrome.webp')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;filter:grayscale(1) brightness(1.12) contrast(1.03)!important;mix-blend-mode:screen!important;opacity:.88!important}
 .blackout-hero-art .hero-metal-object.hero-use-sprite svg{display:none!important}
+/* The plus is already baked into hero-chrome.webp; prevent a duplicate overlay. */
+.blackout-hero-art .hero-plus{display:none!important}
 @media(max-width:700px){.blackout-hero-art .hero-metal-object.hero-use-sprite{left:50%!important;width:min(120vw,380px)!important;aspect-ratio:1.8/1!important;transform:translate(-50%,-50%)!important}}
 #beats .cover.artwork .cover-object-art{position:absolute!important;inset:0!important;z-index:1!important;display:block!important;background-image:url('assets/chrome-sculptures.webp')!important;background-repeat:no-repeat!important;background-size:300% 100%!important;background-color:transparent!important;transition:transform .35s ease,filter .35s ease!important}
 #beats .cover.artwork .cover-object-art.art-spike{background-position:left center!important}
@@ -1219,7 +1235,7 @@ const beats=[
 let currentLang='en';const catalog=document.getElementById('catalog'),search=document.getElementById('search'),sort=document.getElementById('sort');
 
 function artFamily(b){if(b.title==='CORN')return 'spike';if(b.title==='KULAK')return 'orbit';if(b.title==='PACIFIC')return 'crystal';return ['spike','orbit','crystal'][(Number(b.index)-1)%3]}
-function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else list.sort((a,b)=>Number(b.index)-Number(a.index));catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork accent-'+b.index+'"><div class="cover-meta">DEZZ1RE STUDIO</div><div class="cover-title">'+b.title+'</div><div class="cover-object-art art-'+artFamily(b)+'" aria-hidden="true"></div><div class="cover-bpm">'+b.bpm+' BPM</div><div class="cover-plus">+</div></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+(currentLang==='ru'?'ОРИГИНАЛЬНЫЙ БИТ':'ORIGINAL BEAT')+'</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
+function render(){let list=beats.filter(b=>(b.title+' '+b.genre+' '+b.bpm).toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='bpm')list.sort((a,b)=>a.bpm-b.bpm);else{const featured=['CORN','KULAK','PACIFIC'];list.sort((a,b)=>{const ai=featured.indexOf(a.title),bi=featured.indexOf(b.title);if(ai!==-1||bi!==-1)return(ai===-1?99:ai)-(bi===-1?99:bi);return Number(a.index)-Number(b.index)})}catalog.innerHTML=list.length?list.map(b=>'<article class="beat"><div class="cover artwork accent-'+b.index+'"><div class="cover-title">'+b.title+'</div><div class="cover-object-art art-'+artFamily(b)+'" aria-hidden="true"></div><div class="cover-bpm">'+b.bpm+' BPM</div><div class="cover-plus">+</div></div><div class="beat-body"><div class="beat-title"><h3>'+b.title+'</h3><span class="price">'+(currentLang==='ru'?'от 1 200 ₽ / $15':'FROM 1,200 ₽ / $15')+'</span></div><div class="details">'+(currentLang==='ru'?'ОРИГИНАЛЬНЫЙ БИТ':'ORIGINAL BEAT')+'</div><div class="beat-foot"><button class="listen preview" data-title="'+b.title+'" data-audio="'+encodeURIComponent(b.audio)+'">'+(currentLang==='ru'?'▶ &nbsp; СЛУШАТЬ':'▶ &nbsp; LISTEN')+'</button><button class="listen inquiry" data-title="'+b.title+'">'+(currentLang==='ru'?'КУПИТЬ ↗':'BUY ↗')+'</button></div></div></article>').join(''):'<div class="empty">'+(currentLang==='ru'?'НИЧЕГО НЕ НАЙДЕНО. ИЗМЕНИ ПОИСК.':'NOTHING FOUND. TRY ANOTHER SEARCH.')+'</div>';document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>playPreview(btn)));document.querySelectorAll('.inquiry').forEach(btn=>btn.addEventListener('click',()=>openInquiry(btn.dataset.title)))}
 let activeAudio=null,activeButton=null;
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 function formatTime(seconds){if(!Number.isFinite(seconds)||seconds<0)return'0:00';const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return m+':'+String(s).padStart(2,'0')}
