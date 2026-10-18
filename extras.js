@@ -63,6 +63,7 @@ function syncCatalogView(){
  document.getElementById('beats').classList.toggle('catalog-full-page',full);
  if(sectionTitle)sectionTitle.textContent=full?(ru?'ВСЕ БИТЫ':'ALL TRACKS'):(ru?'БИТЫ':'TRACKS');
  if(vol)vol.innerHTML=full?(ru?'ПОЛНЫЙ КАТАЛОГ<br>'+beats.length+' БИТОВ':'FULL CATALOG<br>'+beats.length+' BEATS'):(ru?beats.length+' АВТОРСКИХ БИТОВ<br>ЛИСТАЙ, ЧТОБЫ СМОТРЕТЬ':beats.length+' ORIGINAL BEATS<br>SWIPE TO EXPLORE');
+ if(!activeBeatPage)document.title=full?(ru?'Все биты — DEZZ1RE STUDIO':'All tracks — DEZZ1RE STUDIO'):(ru?'DEZZ1RE STUDIO — Авторские биты':'DEZZ1RE STUDIO — Independent Sound');
  if(viewToggle){viewToggle.textContent=full?(ru?'← НА ГЛАВНУЮ':'← BACK HOME'):(ru?translations.ru.showAllLabel:translations.en.showAllLabel);viewToggle.setAttribute('aria-expanded',String(full));viewToggle.setAttribute('aria-label',full?(ru?'Вернуться на главную':'Return to home'):(ru?'Показать все биты':'Show all beats'))}
  if(viewHint)viewHint.textContent=full?(ru?translations.ru.fullHint:translations.en.fullHint):(ru?translations.ru.swipeHint:translations.en.swipeHint);
  if(layoutTools)layoutTools.hidden=!full;
@@ -74,6 +75,7 @@ function setTracksPage(active,updateUrl=true,replaceHistory=false,scroll=true){
  if(updateUrl&&active!==wasActive){
   const u=new URL(window.location.href);
   if(active)u.searchParams.set('view','tracks');else u.searchParams.delete('view');
+  u.hash='';
   const state={view:active?'tracks':'home'};
   if(replaceHistory)history.replaceState(state,'',u.pathname+u.search+u.hash);else history.pushState(state,'',u.pathname+u.search+u.hash);
  }
@@ -147,7 +149,7 @@ function openBeatPage(title,updateUrl=true,doScroll=true){
 }
 function closeBeatPage(updateUrl=true){
  if(!activeBeatPage&&!document.body.classList.contains("beat-page-mode"))return;
- activeBeatPage="";document.body.classList.remove("beat-page-mode");document.getElementById("beatDetailPage").hidden=true;document.title="DEZZ1RE STUDIO — Independent Sound";
+ activeBeatPage="";document.body.classList.remove("beat-page-mode");document.getElementById("beatDetailPage").hidden=true;document.title=document.body.classList.contains("tracks-page-mode")?(currentLang==="ru"?"Все биты — DEZZ1RE STUDIO":"All tracks — DEZZ1RE STUDIO"):(currentLang==="ru"?"DEZZ1RE STUDIO — Авторские биты":"DEZZ1RE STUDIO — Independent Sound");
  if(updateUrl){const u=new URL(window.location.href);u.searchParams.delete("beat");history.replaceState({},"",u.pathname+u.search+u.hash)}
 }
 document.getElementById("beatDetailBack").addEventListener("click",()=>closeBeatPage(true));
