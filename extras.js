@@ -209,16 +209,83 @@ function drawVisualizer(){
  for(let i=0;i<bars;i++){let value=live&&vizData?vizData[Math.min(vizData.length-1,Math.floor(i*vizData.length/bars))]/255:(i%5===0?.18:.08);if(live&&!vizData)value=.15+Math.abs(Math.sin(Date.now()/90+i*.7))*.55;const bh=Math.max(2,Math.round((.12+value*.88)*h));ctx.fillRect(i*(bw+gap),Math.round((h-bh)/2),bw,bh)}
  if(live)vizFrame=requestAnimationFrame(drawVisualizer);else vizFrame=0;
 }
+let playerQueue=[];
+function readCatalogQueue(){
+ const titles=[...document.querySelectorAll("#catalog .beat")].map(card=>{
+  const btn=card.querySelector(".preview");return btn&&btn.dataset.title?btn.dataset.title:card.querySelector("h3")?.textContent.trim();
+ }).filter(Boolean);
+ return [...new Set(titles)];
+}
+function syncPlayerLabels(){
+ const ru=currentLang==="ru";
+ const prev=document.getElementById("globalPrev"),next=document.getElementById("globalNext"),toggle=document.getElementById("globalToggle");
+ if(prev){prev.setAttribute("aria-label",ru?"Предыдущий бит":"Previous beat");prev.title=ru?"Предыдущий бит":"Previous beat"}
+ if(next){next.setAttribute("aria-label",ru?"Следующий бит":"Next beat");next.title=ru?"Следующий бит":"Next beat"}
+ if(toggle&&!activeAudio)toggle.setAttribute("aria-label",ru?"Воспроизвести":"Play preview");
+}
+function syncPlayerQueueControls(){
+ const prev=document.getElementById("globalPrev"),next=document.getElementById("globalNext");
+ const currentTitle=activeAudio&&activeAudio.dezzireTitle;
+ let index=currentTitle?playerQueue.indexOf(currentTitle):-1;
+ if(index<0&&currentTitle){
+  const visible=readCatalogQueue();
+  if(visible.includes(currentTitle)){playerQueue=visible;index=playerQueue.indexOf(currentTitle)}
+  else{playerQueue=beats.map(b=>b.title);index=playerQueue.indexOf(currentTitle)}
+ }
+ if(prev)prev.disabled=!activeAudio||index<=0;
+ if(next)next.disabled=!activeAudio||index<0||index>=playerQueue.length-1;
+ syncPlayerLabels();
+}
+function bindAutoAdvance(audio){
+ if(!audio||audio.dezzireAutoAdvanceBound)return;
+ audio.dezzireAutoAdvanceBound=true;
+ audio.addEventListener("ended",()=>{
+  if(activeAudio!==audio)return;
+  const index=playerQueue.indexOf(audio.dezzireTitle);
+  if(index<0||index>=playerQueue.length-1)return;
+  const nextTitle=playerQueue[index+1];
+  window.setTimeout(()=>{if(activeAudio===audio&&audio.ended)playQueuedBeat(nextTitle)},0);
+ });
+}
+function playQueuedBeat(title){
+ const b=getBeat(title);if(!b)return;
+ const queueHasTitle=playerQueue.includes(b.title);
+ if(!queueHasTitle){playerQueue=beats.map(x=>x.title)}
+ let button=[...document.querySelectorAll("#catalog .preview")].find(el=>el.dataset.title===b.title);
+ if(!button)button={dataset:{title:b.title,audio:encodeURIComponent(b.audio)}};
+ basePlayPreview(button);
+ if(!activeAudio||activeAudio.dezzireTitle!==b.title)return;
+ const bpm=document.getElementById("globalBpm");
+ bpm.textContent=b.bpm+" BPM";bpm.classList.remove("bpm-pulse");void bpm.offsetWidth;bpm.classList.add("bpm-pulse");
+ document.getElementById("globalBuy").disabled=false;
+ document.getElementById("globalPlayer").classList.add("is-active");
+ prepareVisualizer(activeAudio);bindAutoAdvance(activeAudio);syncPlayerQueueControls();
+}
 const basePlayPreview=playPreview;
 playPreview=function(button){
+ const title=button&&button.dataset&&button.dataset.title;
+ const visible=readCatalogQueue();
+ if(title&&visible.includes(title))playerQueue=visible;
+ else if(title&&!playerQueue.includes(title))playerQueue=beats.map(b=>b.title);
  basePlayPreview(button);
  if(activeAudio&&button.dataset&&button.dataset.audio===activeAudio.dezzirePath){
   const b=getBeat(button.dataset.title),bpm=document.getElementById("globalBpm");
   bpm.textContent=b?b.bpm+" BPM":"— BPM";bpm.classList.remove("bpm-pulse");void bpm.offsetWidth;bpm.classList.add("bpm-pulse");
   document.getElementById("globalBuy").disabled=false;
-  prepareVisualizer(activeAudio);
+  document.getElementById("globalPlayer").classList.add("is-active");
+  prepareVisualizer(activeAudio);bindAutoAdvance(activeAudio);
  }
+ syncPlayerQueueControls();
 };
+document.getElementById("globalPrev").addEventListener("click",()=>{
+ if(!activeAudio)return;const index=playerQueue.indexOf(activeAudio.dezzireTitle);
+ if(index>0)playQueuedBeat(playerQueue[index-1]);
+});
+document.getElementById("globalNext").addEventListener("click",()=>{
+ if(!activeAudio)return;const index=playerQueue.indexOf(activeAudio.dezzireTitle);
+ if(index>=0&&index<playerQueue.length-1)playQueuedBeat(playerQueue[index+1]);
+});
+document.getElementById("globalClose").addEventListener("click",()=>{playerQueue=[];syncPlayerQueueControls()});
 document.getElementById("globalBuy").addEventListener("click",()=>{if(activeAudio&&activeAudio.dezzireTitle)openInquiry(activeAudio.dezzireTitle)});
 document.getElementById("globalClose").addEventListener("click",()=>{if(vizSource){try{vizSource.disconnect()}catch(e){}vizSource=null;vizAudio=null}document.getElementById("globalBuy").disabled=true;document.getElementById("globalBpm").textContent="— BPM";startVisualizer()});
 const baseOpenInquiry=openInquiry;
@@ -234,6 +301,8 @@ const baseSetLanguage=setLanguage;
 setLanguage=function(lang){
  baseSetLanguage(lang);
  syncCatalogView();
+ syncPlayerLabels();
+ syncPlayerQueueControls();
  document.getElementById("briefRefs").placeholder=translations[lang].briefRefsPlaceholder;
  document.getElementById("briefMood").placeholder=translations[lang].briefMoodPlaceholder;
  document.getElementById("artistBriefMessage").placeholder=translations[lang].briefMessagePlaceholder;
@@ -241,6 +310,7 @@ setLanguage=function(lang){
  if(activeBeatPage)openBeatPage(activeBeatPage,false,false);
 };
 setLanguage(currentLang);
+syncPlayerQueueControls();
 setTracksPage(new URLSearchParams(window.location.search).get('view')==='tracks',false,false,false);
 const deepLink=new URLSearchParams(window.location.search).get("beat");if(deepLink)openBeatPage(deepLink,false,false);
 })();
