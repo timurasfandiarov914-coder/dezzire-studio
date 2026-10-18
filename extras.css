@@ -286,3 +286,17 @@ body.tracks-page-mode #catalog-list-status,body.tracks-page-mode #catalog-status
  body.tracks-page-mode #catalog.catalog-grid-view>.beat>.cover{width:64px!important;height:64px!important;margin:10px!important;border-bottom:0!important}
  body.tracks-page-mode #catalog.catalog-grid-view>.beat>.beat-body{padding:10px 8px!important}
 }
+
+/* Catalog rows: explicit, readable mobile action layout. */
+body.tracks-page-mode #catalog.catalog-list-view .beat-foot .listen,
+body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-buy,
+body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-details,
+body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-share{font-size:10px!important}
+@media(max-width:760px){
+ body.tracks-page-mode #catalog.catalog-list-view .beat-foot{display:grid!important;grid-template-columns:repeat(2,minmax(0,max-content))!important;justify-content:start!important;align-items:center!important;gap:7px!important}
+ body.tracks-page-mode #catalog.catalog-list-view .beat-foot .listen{min-width:90px!important;min-height:36px!important}
+ body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-buy{min-width:84px!important;min-height:36px!important;padding:8px 10px!important;border:1px solid var(--line)!important;text-align:center!important}
+ body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-details,
+ body.tracks-page-mode #catalog.catalog-list-view .beat-foot .beat-share{display:inline-flex!important;min-height:30px!important;align-items:center!important;padding:4px 0!important}
+ body.tracks-page-mode #catalog.catalog-list-view .beat-title .price{display:block!important}
+}
