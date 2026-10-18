@@ -364,3 +364,81 @@ body.tracks-page-mode #beats #catalog.catalog-list-view>.beat:nth-child(n) .cove
  body.tracks-page-mode #beats #catalog.catalog-list-view>.beat:nth-child(n) .beat-foot .beat-details,
  body.tracks-page-mode #beats #catalog.catalog-list-view>.beat:nth-child(n) .beat-foot .beat-share{min-width:0!important}
 }
+
+/* Button contrast hotfix — never allow white-on-white / blank controls in either catalog mode. */
+html body #beats .catalog-head-actions #catalogViewToggle,
+html body #beats .catalog-head-actions #catalogViewToggle:hover,
+html body #beats .catalog-head-actions #catalogViewToggle:focus,
+html body #beats .catalog-head-actions #catalogViewToggle:active{
+  appearance:none!important;-webkit-appearance:none!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-width:120px!important;min-height:44px!important;padding:12px 16px!important;
+  background:#0a0a0a!important;background-color:#0a0a0a!important;
+  color:#f4f2e9!important;-webkit-text-fill-color:#f4f2e9!important;
+  border:1px solid #5c5c5c!important;border-radius:0!important;
+  font:10px/1.2 var(--mono)!important;letter-spacing:.07em!important;
+  opacity:1!important;text-shadow:none!important;box-shadow:none!important;
+}
+html body #beats #catalogLayoutTools,
+html body #beats #catalogLayoutTools:not([hidden]){
+  background:#0a0a0a!important;background-color:#0a0a0a!important;
+  border:1px solid #5c5c5c!important;box-shadow:none!important;
+}
+html body #beats #catalogLayoutTools[hidden]{display:none!important}
+html body #beats #catalogLayoutTools .catalog-layout-choice,
+html body #beats #catalogLayoutTools .catalog-layout-choice:hover,
+html body #beats #catalogLayoutTools .catalog-layout-choice:focus,
+html body #beats #catalogLayoutTools .catalog-layout-choice:active,
+html body #beats #catalogLayoutTools .catalog-layout-choice.is-active{
+  appearance:none!important;-webkit-appearance:none!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-width:82px!important;min-height:44px!important;padding:10px 12px!important;
+  background:#0a0a0a!important;background-color:#0a0a0a!important;
+  color:#f4f2e9!important;-webkit-text-fill-color:#f4f2e9!important;
+  border:0!important;border-right:1px solid #5c5c5c!important;border-radius:0!important;
+  font:10px/1.2 var(--mono)!important;letter-spacing:.04em!important;
+  opacity:1!important;text-shadow:none!important;box-shadow:none!important;
+}
+html body #beats #catalogLayoutTools .catalog-layout-choice.is-active{
+  box-shadow:inset 0 -2px 0 #f4f2e9!important;font-weight:600!important;
+}
+html body #beats #catalogLayoutTools .catalog-layout-choice:last-child{border-right:0!important}
+html body #beats #catalog button.listen,
+html body #beats #catalog button.listen:hover,
+html body #beats #catalog button.listen:focus,
+html body #beats #catalog button.listen:active{
+  appearance:none!important;-webkit-appearance:none!important;
+  opacity:1!important;-webkit-text-fill-color:inherit;
+  text-shadow:none!important;box-shadow:none!important;
+}
+html body #beats #catalog button.listen.preview{
+  color:#f4f2e9!important;-webkit-text-fill-color:#f4f2e9!important;
+  background:#080808!important;background-color:#080808!important;
+  border:1px solid #555!important;border-radius:0!important;
+}
+html body #beats #catalog button.listen.inquiry,
+html body #beats #catalog.catalog-list-view button.listen.inquiry,
+html body #beats #catalog.catalog-grid-view button.listen.inquiry,
+html body #beats #catalog.catalog-home-view button.listen.inquiry{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-width:72px!important;min-height:38px!important;padding:9px 12px!important;
+  color:#f4f2e9!important;-webkit-text-fill-color:#f4f2e9!important;
+  background:#111!important;background-color:#111!important;
+  border:1px solid #777!important;border-radius:0!important;
+  font:10px/1.2 var(--mono)!important;letter-spacing:.06em!important;
+  opacity:1!important;
+}
+html body #beats #catalog button.listen.inquiry:hover,
+html body #beats #catalog button.listen.inquiry:focus-visible{
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  background:#202020!important;background-color:#202020!important;border-color:#b7b7b7!important;
+}
+html body.tracks-page-mode #beats #catalog.catalog-list-view>.beat:nth-child(n) .beat-foot .listen.inquiry{
+  background:#111!important;background-color:#111!important;color:#f4f2e9!important;
+  -webkit-text-fill-color:#f4f2e9!important;border:1px solid #777!important;
+}
+@media(max-width:760px){
+ html body #beats .catalog-head-actions #catalogViewToggle{min-height:44px!important;min-width:116px!important;font-size:11px!important}
+ html body #beats #catalogLayoutTools .catalog-layout-choice{min-width:74px!important;min-height:44px!important}
+ html body #beats #catalog button.listen.inquiry{min-width:76px!important;min-height:38px!important;font-size:10px!important}
+}
