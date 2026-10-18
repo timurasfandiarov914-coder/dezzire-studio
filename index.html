@@ -2005,8 +2005,6 @@ function openInquiry(title){
   ?'<option value="mp3">ЛИЦЕНЗИЯ MP3 · 1 200 ₽ / $15</option><option value="wav">ЛИЦЕНЗИЯ WAV · 2 000 ₽ / $25</option>'
   :'<option value="mp3">MP3 LICENSE · 1 200 ₽ / $15</option><option value="wav">WAV LICENSE · 2 000 ₽ / $25</option>';
  licenseSelect.value='mp3';document.getElementById('licenseUseCase').value='streaming';document.getElementById('useCaseLabel').textContent=ru?'ДЛЯ ЧЕГО НУЖЕН БИТ?':'WHAT ARE YOU MAKING?';document.getElementById('messageLabel').textContent=ru?'ГОТОВОЕ СООБЩЕНИЕ':'READY-TO-SEND MESSAGE';document.getElementById('licenseUseCase').innerHTML=ru?'<option value="streaming">Релиз на стримингах</option><option value="video">YouTube / соцсети</option><option value="commercial">Коммерческий проект / реклама</option><option value="stems">Нужны stems или эксклюзив</option><option value="other">Другое / обсудить с продюсером</option>':'<option value="streaming">Streaming release</option><option value="video">YouTube / social video</option><option value="commercial">Commercial project / campaign</option><option value="stems">Need stems or exclusive terms</option><option value="other">Other / discuss with producer</option>';document.getElementById('licenseChecklist').textContent=ru?'Перед оплатой уточни разрешённые платформы, монетизацию, ограничения использования, состав файлов и возможность получить stems или эксклюзив. Выбранный вариант — это запрос, а не подтверждение прав по лицензии.':'Before paying, confirm the permitted platforms, monetization, usage limits, delivered files, and whether stems or exclusivity are available. Your selection is a request, not a confirmation of license rights.';
- document.getElementById('buyInstagram').textContent=ru?'НАПИСАТЬ В INSTAGRAM ↗':'MESSAGE ON INSTAGRAM ↗';
- document.getElementById('buyTelegram').textContent=ru?'НАПИСАТЬ В TELEGRAM ↗':'MESSAGE ON TELEGRAM ↗';
  document.getElementById('copyInquiry').textContent=ru?'1 · СКОПИРОВАТЬ СООБЩЕНИЕ':'1 · COPY MESSAGE';document.getElementById('buyInstagram').textContent=ru?'2 · НАПИСАТЬ В INSTAGRAM ↗':'2 · INSTAGRAM DM ↗';document.getElementById('buyTelegram').textContent=ru?'2 · НАПИСАТЬ В TELEGRAM ↗':'2 · TELEGRAM ↗';
  document.getElementById('inquiryNote').textContent=ru?'Сначала скопируй готовое сообщение, затем открой Instagram или Telegram и отправь его. Оплата на сайте не принимается — все условия лицензии нужно подтвердить до оплаты.':'Copy the prepared message first, then open Instagram or Telegram and send it. Payment is not processed on this website; confirm all license terms before paying.';
  updatePurchaseMessage();
@@ -2036,9 +2034,9 @@ function openServiceInquiry(service){
  document.getElementById('licenseSelect').hidden=true;
  document.getElementById('licenseUseCaseWrap').hidden=true;
  document.getElementById('licenseChecklist').hidden=true;
- document.getElementById('buyInstagram').textContent=ru?'НАПИСАТЬ В INSTAGRAM ↗':'MESSAGE ON INSTAGRAM ↗';
- document.getElementById('buyTelegram').textContent=ru?'НАПИСАТЬ В TELEGRAM ↗':'MESSAGE ON TELEGRAM ↗';
- document.getElementById('copyInquiry').textContent=ru?'СКОПИРОВАТЬ СООБЩЕНИЕ':'COPY MESSAGE';
+ document.getElementById('copyInquiry').textContent=ru?'1 · СКОПИРОВАТЬ СООБЩЕНИЕ':'1 · COPY MESSAGE';
+ document.getElementById('buyInstagram').textContent=ru?'2 · НАПИСАТЬ В INSTAGRAM ↗':'2 · INSTAGRAM DM ↗';
+ document.getElementById('buyTelegram').textContent=ru?'2 · НАПИСАТЬ В TELEGRAM ↗':'2 · TELEGRAM ↗';
  document.getElementById('inquiryNote').textContent=ru?'Сначала скопируй сообщение, затем открой Instagram или Telegram. Стоимость и условия обсуждаются в переписке.':'Copy the message first, then open Instagram or Telegram. Pricing and terms are discussed in chat.';
  updatePurchaseMessage();
  document.getElementById('inquiryBackdrop').classList.add('open');
