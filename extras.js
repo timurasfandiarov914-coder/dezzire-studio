@@ -92,8 +92,18 @@ if(gridLayoutButton)gridLayoutButton.addEventListener('click',()=>{catalogGridMo
 window.addEventListener('popstate',()=>{setTracksPage(new URLSearchParams(window.location.search).get('view')==='tracks',false,false,false)});
 document.querySelectorAll('.top .logo,.top .nav a').forEach(link=>link.addEventListener('click',event=>{
  const target=link.getAttribute('href');
- if(!(isTracksPage()||document.body.classList.contains('beat-page-mode'))||!target||!target.startsWith('#'))return;
- if(target==='#beats'&&isTracksPage())return;
+ if(!target||!target.startsWith('#'))return;
+ if(target==='#beats'){
+  if(isTracksPage()){
+   if(activeBeatPage){event.preventDefault();closeBeatPage(true);document.getElementById('beats').scrollIntoView({behavior:'smooth',block:'start'})}
+   return;
+  }
+  event.preventDefault();
+  if(activeBeatPage)closeBeatPage(true);
+  setTracksPage(true,true,false,true);
+  return;
+ }
+ if(!(isTracksPage()||document.body.classList.contains('beat-page-mode')))return;
  event.preventDefault();
  if(activeBeatPage)closeBeatPage(true);
  setTracksPage(false,true,true,false);
