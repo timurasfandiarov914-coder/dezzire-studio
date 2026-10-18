@@ -519,3 +519,36 @@ html body.tracks-page-mode #beats #catalog.catalog-list-view>.beat:nth-child(n) 
 @media(prefers-reduced-motion:reduce){
  .global-player,.global-player-controls button{transition:none!important}
 }
+
+/* Motion performance pass: keep the industrial look, remove expensive continuous paint work. */
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+html.motion-ready .motion-reveal{
+ opacity:0;transform:translate3d(0,12px,0);filter:none!important;
+ transition:opacity .42s cubic-bezier(.2,.7,.2,1),transform .42s cubic-bezier(.2,.7,.2,1)!important;
+ transition-delay:var(--motion-delay,0ms);
+ will-change:opacity,transform;
+}
+html.motion-ready .motion-reveal.is-visible{opacity:1;transform:translate3d(0,0,0);filter:none!important}
+#beats .cover-object-art{animation:none!important;will-change:auto!important;transform:translateZ(0);transition:transform .24s cubic-bezier(.2,.7,.2,1)!important}
+#beats .beat{transition:background-color .2s ease,border-color .2s ease,transform .2s ease!important}
+#beats .beat:hover .cover-object-art{filter:none!important;transform:scale(1.018) translateZ(0)!important}
+.blackout-hero-art .hero-metal-object.hero-use-sprite{animation-duration:12s!important}
+.blackout-marquee-track{will-change:transform;backface-visibility:hidden;animation-duration:56s!important}
+.global-player,.global-player-controls,.global-player-controls button{backface-visibility:hidden}
+.global-track-title{transition:opacity .16s ease!important}
+.catalog-view-toggle,.catalog-layout-choice,.catalog-action,.listen,.beat-detail-back,.similar-beat{transition:color .16s ease,background-color .16s ease,border-color .16s ease,opacity .16s ease!important}
+@media(hover:none),(pointer:coarse){
+ #beats .beat:hover{transform:none!important;box-shadow:none!important}
+ #beats .beat:hover .cover-object-art{filter:none!important;transform:none!important}
+ .kinetic-cta:hover b,.blackout-cta:hover b{transform:none!important}
+}
+@media(max-width:760px){
+ html.motion-ready .motion-reveal{transition-duration:.32s!important;transition-delay:0ms!important;transform:translate3d(0,8px,0)}
+ .blackout-marquee-track{animation-duration:64s!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ html.motion-ready .motion-reveal,html.motion-ready .motion-reveal.is-visible{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important}
+ #beats .cover-object-art,.blackout-hero-art .hero-metal-object.hero-use-sprite,.blackout-marquee-track{animation:none!important;transition:none!important;will-change:auto!important}
+ .global-player,.global-player-controls,.global-player-controls button,.global-track-title{transition:none!important}
+}
