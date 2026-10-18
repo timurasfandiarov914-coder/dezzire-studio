@@ -187,28 +187,86 @@ function createArtistBrief(){
 }
 document.getElementById("artistBriefForm").addEventListener("submit",e=>{e.preventDefault();createArtistBrief();document.getElementById("artistBriefMessage").focus();showToast(currentLang==="ru"?"БРИФ ГОТОВ — СКОПИРУЙ И ОТПРАВЬ":"BRIEF READY — COPY AND SEND")});
 document.getElementById("copyArtistBrief").addEventListener("click",()=>{if(!document.getElementById("artistBriefMessage").value)createArtistBrief();copyText(document.getElementById("artistBriefMessage").value,currentLang==="ru"?"БРИФ СКОПИРОВАН":"BRIEF COPIED")});
-let vizContext=null,vizAnalyser=null,vizFrame=0,vizData=null,vizSource=null,vizAudio=null;
+let vizContext=null,vizAnalyser=null,vizFrame=0,vizData=null,vizSource=null,vizAudio=null,vizLastPaint=0;
+const reducedMotionQuery=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):null;
+function drawVisualizerFrame(isPlaying){
+ const canvas=document.getElementById("audioVisualizer");
+ if(!canvas)return;
+ const ctx=canvas.getContext("2d");
+ if(!ctx)return;
+ const w=canvas.width,h=canvas.height;
+ ctx.clearRect(0,0,w,h);
+ if(isPlaying&&vizAnalyser&&vizData)vizAnalyser.getByteFrequencyData(vizData);
+ const bars=32,gap=3,bw=(w-gap*(bars-1))/bars;
+ ctx.fillStyle=document.documentElement.dataset.theme==="dark"?"#f1f1f1":"#111111";
+ for(let i=0;i<bars;i++){
+  const sample=isPlaying&&vizAnalyser&&vizData?vizData[Math.min(vizData.length-1,Math.floor(i*vizData.length/bars))]/255:null;
+  const value=sample===null?(i%5===0?.18:.08):sample;
+  const bh=Math.max(2,Math.round((.12+value*.88)*h));
+  ctx.fillRect(Math.round(i*(bw+gap)),Math.round((h-bh)/2),Math.ceil(bw),bh);
+ }
+}
 function prepareVisualizer(audio){
+ if(!audio)return;
  try{
-  const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
-  if(vizAudio===audio){if(vizContext.state==="suspended")vizContext.resume();startVisualizer();return}
-  if(!vizContext){vizContext=new Ctx();vizAnalyser=vizContext.createAnalyser();vizAnalyser.fftSize=128;vizAnalyser.smoothingTimeConstant=.78;vizData=new Uint8Array(vizAnalyser.frequencyBinCount);vizAnalyser.connect(vizContext.destination)}
-  if(vizSource){vizSource.disconnect();vizSource=null}
-  vizSource=vizContext.createMediaElementSource(audio);vizSource.connect(vizAnalyser);vizAudio=audio;
-  if(vizContext.state==="suspended")vizContext.resume();
-  audio.addEventListener("playing",startVisualizer);audio.addEventListener("pause",startVisualizer);audio.addEventListener("ended",startVisualizer);
- }catch(e){/* Playback remains available if live analysis is unsupported. */}
+  const Ctx=window.AudioContext||window.webkitAudioContext;
+  if(!Ctx){startVisualizer();return}
+  if(vizAudio===audio){
+   if(vizContext&&vizContext.state==="suspended")vizContext.resume().catch(()=>{});
+   startVisualizer();return;
+  }
+  if(!vizContext){
+   vizContext=new Ctx();
+   vizAnalyser=vizContext.createAnalyser();
+   vizAnalyser.fftSize=128;
+   vizAnalyser.smoothingTimeConstant=.82;
+   vizData=new Uint8Array(vizAnalyser.frequencyBinCount);
+   vizAnalyser.connect(vizContext.destination);
+  }
+  if(vizSource){try{vizSource.disconnect()}catch(e){}vizSource=null}
+  vizSource=vizContext.createMediaElementSource(audio);
+  vizSource.connect(vizAnalyser);
+  vizAudio=audio;
+  if(vizContext.state==="suspended")vizContext.resume().catch(()=>{});
+  audio.addEventListener("playing",startVisualizer);
+  audio.addEventListener("pause",startVisualizer);
+  audio.addEventListener("ended",startVisualizer);
+ }catch(e){
+  // Audio playback remains functional even when Web Audio analysis is unavailable.
+ }
  startVisualizer();
 }
-function startVisualizer(){if(!vizFrame)vizFrame=requestAnimationFrame(drawVisualizer)}
-function drawVisualizer(){
- const canvas=document.getElementById("audioVisualizer");if(!canvas){vizFrame=0;return}
- const ctx=canvas.getContext("2d"),w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
- const live=!!(activeAudio&&!activeAudio.paused&&!activeAudio.ended&&!activeAudio.error);if(live&&vizAnalyser&&vizData)vizAnalyser.getByteFrequencyData(vizData);
- const bars=32,gap=3,bw=(w-gap*(bars-1))/bars;ctx.fillStyle=document.documentElement.dataset.theme==="dark"?"#f1f1f1":"#111111";
- for(let i=0;i<bars;i++){let value=live&&vizData?vizData[Math.min(vizData.length-1,Math.floor(i*vizData.length/bars))]/255:(i%5===0?.18:.08);if(live&&!vizData)value=.15+Math.abs(Math.sin(Date.now()/90+i*.7))*.55;const bh=Math.max(2,Math.round((.12+value*.88)*h));ctx.fillRect(i*(bw+gap),Math.round((h-bh)/2),bw,bh)}
- if(live)vizFrame=requestAnimationFrame(drawVisualizer);else vizFrame=0;
+function stopVisualizerLoop(){
+ if(vizFrame){cancelAnimationFrame(vizFrame);vizFrame=0}
 }
+function startVisualizer(){
+ if(document.hidden){stopVisualizerLoop();return}
+ if(vizFrame)return;
+ vizFrame=requestAnimationFrame(drawVisualizer);
+}
+function drawVisualizer(timestamp){
+ vizFrame=0;
+ if(document.hidden)return;
+ const isPlaying=!!(activeAudio&&!activeAudio.paused&&!activeAudio.ended&&!activeAudio.error);
+ const reduced=!!(reducedMotionQuery&&reducedMotionQuery.matches);
+ if(isPlaying&&!reduced&&timestamp-vizLastPaint<33){
+  vizFrame=requestAnimationFrame(drawVisualizer);return;
+ }
+ vizLastPaint=timestamp||0;
+ drawVisualizerFrame(isPlaying);
+ if(isPlaying&&!reduced&&!document.hidden)vizFrame=requestAnimationFrame(drawVisualizer);
+}
+document.addEventListener("visibilitychange",()=>{
+ if(document.hidden)stopVisualizerLoop();
+ else startVisualizer();
+});
+if(reducedMotionQuery){
+ const onMotionPreferenceChange=()=>{stopVisualizerLoop();startVisualizer()};
+ if(reducedMotionQuery.addEventListener)reducedMotionQuery.addEventListener("change",onMotionPreferenceChange);
+ else if(reducedMotionQuery.addListener)reducedMotionQuery.addListener(onMotionPreferenceChange);
+}
+window.addEventListener("pagehide",stopVisualizerLoop);
+window.addEventListener("pageshow",()=>{if(activeAudio&&!activeAudio.paused)startVisualizer()});
 let playerQueue=[];
 function readCatalogQueue(){
  const titles=[...document.querySelectorAll("#catalog .beat")].map(card=>{
