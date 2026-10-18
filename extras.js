@@ -48,6 +48,7 @@ feedbackNote:"Есть релиз на бите DEZZ1RE? Отправь ссыл
 feedbackInstagram:"ОТПРАВИТЬ РЕЛИЗ ↗",feedbackTelegram:"ОТПРАВИТЬ РЕЛИЗ ↗"
 };
 Object.assign(translations.en,en);Object.assign(translations.ru,ru);
+function getBeat(title){return beats.find(b=>b.title.toLowerCase()===String(title||"").toLowerCase())}
 Object.assign(getBeat("DREAMZ"),{key:"B major"});Object.assign(getBeat("GETUP"),{key:"E minor"});
 Object.assign(getBeat("KULAK"),{key:"C minor"});Object.assign(getBeat("OVERTIME"),{key:"D# minor"});Object.assign(getBeat("PACIFIC"),{key:"C# minor"});
 const baseRender=render;
