@@ -234,6 +234,7 @@ function syncPlayerQueueControls(){
  }
  if(prev)prev.disabled=!activeAudio||index<=0;
  if(next)next.disabled=!activeAudio||index<0||index>=playerQueue.length-1;
+ document.querySelectorAll("#catalog .beat").forEach(card=>card.classList.toggle("is-current-track",!!currentTitle&&card.querySelector("h3")?.textContent.trim()===currentTitle));
  syncPlayerLabels();
 }
 function bindAutoAdvance(audio){
