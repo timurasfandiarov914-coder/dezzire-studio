@@ -122,3 +122,5 @@ body.beat-page-mode{padding-bottom:90px}
 @media(prefers-reduced-motion:reduce){
  .catalog-action,.global-track-title,.global-bpm,.beat-week-actions .pill{transition:none!important;animation:none!important}
 }
+.beat-week-story{font:10px/1.8 var(--mono)!important;color:var(--muted)!important;border-left:2px solid var(--line);padding-left:13px;margin:12px 0 8px!important;max-width:70ch}
+.beat-detail-credit{font:10px/1.7 var(--mono);letter-spacing:.25px;color:var(--muted);border-left:2px solid var(--line);padding:9px 0 9px 12px;margin:12px 0}
