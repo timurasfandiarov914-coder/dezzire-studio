@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const en={
-catalogToolsNote:"Find your next sound or let the catalog surprise you.",randomBeat:"RANDOM BEAT ↗",
+catalogToolsNote:"Find your next sound or let the catalog surprise you.",randomBeat:"RANDOM BEAT ↗",showAllLabel:"SHOW ALL ↗",backHomeLabel:"← HOME",listLayoutLabel:"☰ LIST",gridLayoutLabel:"▦ GRID",swipeHint:"SWIPE TO EXPLORE ↔",fullHint:"FULL CATALOG / FILTER & SORT",
 beatWeekTitle:"BEAT OF THE WEEK",beatWeekLabel:"WEEKLY SPOTLIGHT<br>ONE SOUND / ONE WEEK",beatBack:"← BACK TO CATALOG",
 licenseTitle:"Licenses.",licenseLabel:"COMPARE FORMATS<br>CONFIRM RIGHTS BEFORE PAYMENT",licenseMp3:"MP3 license",
 licenseMp3Copy:"Request an MP3 delivery license. Confirm the exact files, permitted uses, platforms and monetization before payment.",
@@ -25,7 +25,7 @@ feedbackNote:"Want to share a release made with a DEZZ1RE beat? Send the track l
 feedbackInstagram:"SEND A RELEASE ↗",feedbackTelegram:"SEND A RELEASE ↗"
 };
 const ru={
-catalogToolsNote:"Найди свой следующий звук или доверься случайному выбору каталога.",randomBeat:"СЛУЧАЙНЫЙ БИТ ↗",
+catalogToolsNote:"Найди свой следующий звук или доверься случайному выбору каталога.",randomBeat:"СЛУЧАЙНЫЙ БИТ ↗",showAllLabel:"ПОКАЗАТЬ ВСЕ ↗",backHomeLabel:"← НА ГЛАВНУЮ",listLayoutLabel:"☰ СПИСОК",gridLayoutLabel:"▦ СЕТКА",swipeHint:"ЛИСТАЙ КАТАЛОГ ↔",fullHint:"ВЕСЬ КАТАЛОГ / ПОИСК И СОРТИРОВКА",
 beatWeekTitle:"БИТ НЕДЕЛИ",beatWeekLabel:"ЕЖЕНЕДЕЛЬНЫЙ ВЫБОР<br>ОДИН БИТ / ОДНА НЕДЕЛЯ",beatBack:"← НАЗАД В КАТАЛОГ",
 licenseTitle:"Лицензии.",licenseLabel:"СРАВНИ ФОРМАТЫ<br>УТОЧНИ ПРАВА ДО ОПЛАТЫ",licenseMp3:"Лицензия MP3",
 licenseMp3Copy:"Запроси лицензию с передачей MP3. До оплаты уточни точные файлы, разрешённое использование, платформы и монетизацию.",
@@ -52,14 +52,52 @@ function getBeat(title){return beats.find(b=>b.title.toLowerCase()===String(titl
 Object.assign(getBeat("DREAMZ"),{key:"B major",credits:"@enosonek"});Object.assign(getBeat("GETUP"),{key:"E minor"});
 Object.assign(getBeat("KULAK"),{key:"C minor",credits:"enosonek"});Object.assign(getBeat("OVERTIME"),{key:"D# minor"});Object.assign(getBeat("PACIFIC"),{key:"C# minor"});
 const viewToggle=document.getElementById('catalogViewToggle'),viewHint=document.getElementById('catalogViewHint');
-let catalogExpanded=false;
+const listLayoutButton=document.getElementById('catalogListLayout'),gridLayoutButton=document.getElementById('catalogGridLayout'),layoutTools=document.getElementById('catalogLayoutTools');
+let catalogGridMode=false;
+function isTracksPage(){return document.body.classList.contains('tracks-page-mode')}
 function syncCatalogView(){
- const ru=currentLang==='ru';
- if(viewToggle){viewToggle.textContent=catalogExpanded?(ru?'СКРЫТЬ ↖':'SHOW LESS ↖'):(ru?'ПОКАЗАТЬ ВСЕ ↗':'SHOW ALL ↗');viewToggle.setAttribute('aria-expanded',String(catalogExpanded));}
- if(viewHint)viewHint.textContent=catalogExpanded?(ru?'ВСЕ БИТЫ / СЕТКА':'ALL BEATS / GRID'):(ru?'ЛИСТАЙ, ЧТОБЫ СМОТРЕТЬ':'SWIPE TO EXPLORE');
- catalog.classList.toggle('catalog-expanded',catalogExpanded);
+ const full=isTracksPage(),ru=currentLang==='ru',sectionTitle=document.querySelector('.catalog-section-top h2'),vol=document.querySelector('.catalog-section-top [data-i="vol"]');
+ catalog.classList.toggle('catalog-home-view',!full);
+ catalog.classList.toggle('catalog-list-view',full&&!catalogGridMode);
+ catalog.classList.toggle('catalog-grid-view',full&&catalogGridMode);
+ document.getElementById('beats').classList.toggle('catalog-full-page',full);
+ if(sectionTitle)sectionTitle.textContent=full?(ru?'ВСЕ БИТЫ':'ALL TRACKS'):(ru?'БИТЫ':'TRACKS');
+ if(vol)vol.innerHTML=full?(ru?'ПОЛНЫЙ КАТАЛОГ<br>'+beats.length+' БИТОВ':'FULL CATALOG<br>'+beats.length+' BEATS'):(ru?beats.length+' АВТОРСКИХ БИТОВ<br>ЛИСТАЙ, ЧТОБЫ СМОТРЕТЬ':beats.length+' ORIGINAL BEATS<br>SWIPE TO EXPLORE');
+ if(viewToggle){viewToggle.textContent=full?(ru?'← НА ГЛАВНУЮ':'← BACK HOME'):(ru?translations.ru.showAllLabel:translations.en.showAllLabel);viewToggle.setAttribute('aria-expanded',String(full));viewToggle.setAttribute('aria-label',full?(ru?'Вернуться на главную':'Return to home'):(ru?'Показать все биты':'Show all beats'))}
+ if(viewHint)viewHint.textContent=full?(ru?translations.ru.fullHint:translations.en.fullHint):(ru?translations.ru.swipeHint:translations.en.swipeHint);
+ if(layoutTools)layoutTools.hidden=!full;
+ if(listLayoutButton){listLayoutButton.classList.toggle('is-active',!catalogGridMode);listLayoutButton.setAttribute('aria-pressed',String(!catalogGridMode));listLayoutButton.textContent=ru?translations.ru.listLayoutLabel:translations.en.listLayoutLabel}
+ if(gridLayoutButton){gridLayoutButton.classList.toggle('is-active',catalogGridMode);gridLayoutButton.setAttribute('aria-pressed',String(catalogGridMode));gridLayoutButton.textContent=ru?translations.ru.gridLayoutLabel:translations.en.gridLayoutLabel}
 }
-if(viewToggle)viewToggle.addEventListener('click',()=>{catalogExpanded=!catalogExpanded;syncCatalogView();if(catalogExpanded)document.getElementById('beats')?.scrollIntoView({behavior:'smooth',block:'start'});});
+function setTracksPage(active,updateUrl=true,replaceHistory=false,scroll=true){
+ const wasActive=isTracksPage();
+ if(updateUrl&&active!==wasActive){
+  const u=new URL(window.location.href);
+  if(active)u.searchParams.set('view','tracks');else u.searchParams.delete('view');
+  const state={view:active?'tracks':'home'};
+  if(replaceHistory)history.replaceState(state,'',u.pathname+u.search+u.hash);else history.pushState(state,'',u.pathname+u.search+u.hash);
+ }
+ document.body.classList.toggle('tracks-page-mode',active);
+ syncCatalogView();
+ if(updateUrl&&scroll){
+  if(active)document.getElementById('beats').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  else window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ }
+}
+if(viewToggle)viewToggle.addEventListener('click',()=>{const opening=!isTracksPage();setTracksPage(opening,true,!opening,true)});
+if(listLayoutButton)listLayoutButton.addEventListener('click',()=>{catalogGridMode=false;syncCatalogView()});
+if(gridLayoutButton)gridLayoutButton.addEventListener('click',()=>{catalogGridMode=true;syncCatalogView()});
+window.addEventListener('popstate',()=>{setTracksPage(new URLSearchParams(window.location.search).get('view')==='tracks',false,false,false)});
+document.querySelectorAll('.top .logo,.top .nav a').forEach(link=>link.addEventListener('click',event=>{
+ const target=link.getAttribute('href');
+ if(!(isTracksPage()||document.body.classList.contains('beat-page-mode'))||!target||!target.startsWith('#'))return;
+ if(target==='#beats'&&isTracksPage())return;
+ event.preventDefault();
+ if(activeBeatPage)closeBeatPage(true);
+ setTracksPage(false,true,true,false);
+ const u=new URL(window.location.href);u.hash=target.slice(1);history.replaceState({view:'home'},'',u.pathname+u.search+u.hash);
+ document.querySelector(target)?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+}));
 const baseRender=render;
 render=function(){
  baseRender();
@@ -183,6 +221,7 @@ openInquiry=function(title){
 const baseSetLanguage=setLanguage;
 setLanguage=function(lang){
  baseSetLanguage(lang);
+ syncCatalogView();
  document.getElementById("briefRefs").placeholder=translations[lang].briefRefsPlaceholder;
  document.getElementById("briefMood").placeholder=translations[lang].briefMoodPlaceholder;
  document.getElementById("artistBriefMessage").placeholder=translations[lang].briefMessagePlaceholder;
@@ -190,5 +229,6 @@ setLanguage=function(lang){
  if(activeBeatPage)openBeatPage(activeBeatPage,false,false);
 };
 setLanguage(currentLang);
+setTracksPage(new URLSearchParams(window.location.search).get('view')==='tracks',false,false,false);
 const deepLink=new URLSearchParams(window.location.search).get("beat");if(deepLink)openBeatPage(deepLink,false,false);
 })();
