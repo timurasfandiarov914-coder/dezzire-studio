@@ -51,9 +51,19 @@ Object.assign(translations.en,en);Object.assign(translations.ru,ru);
 function getBeat(title){return beats.find(b=>b.title.toLowerCase()===String(title||"").toLowerCase())}
 Object.assign(getBeat("DREAMZ"),{key:"B major",credits:"@enosonek"});Object.assign(getBeat("GETUP"),{key:"E minor"});
 Object.assign(getBeat("KULAK"),{key:"C minor",credits:"enosonek"});Object.assign(getBeat("OVERTIME"),{key:"D# minor"});Object.assign(getBeat("PACIFIC"),{key:"C# minor"});
+const viewToggle=document.getElementById('catalogViewToggle'),viewHint=document.getElementById('catalogViewHint');
+let catalogExpanded=false;
+function syncCatalogView(){
+ const ru=currentLang==='ru';
+ if(viewToggle){viewToggle.textContent=catalogExpanded?(ru?'СКРЫТЬ ↖':'SHOW LESS ↖'):(ru?'ПОКАЗАТЬ ВСЕ ↗':'SHOW ALL ↗');viewToggle.setAttribute('aria-expanded',String(catalogExpanded));}
+ if(viewHint)viewHint.textContent=catalogExpanded?(ru?'ВСЕ БИТЫ / СЕТКА':'ALL BEATS / GRID'):(ru?'ЛИСТАЙ, ЧТОБЫ СМОТРЕТЬ':'SWIPE TO EXPLORE');
+ catalog.classList.toggle('catalog-expanded',catalogExpanded);
+}
+if(viewToggle)viewToggle.addEventListener('click',()=>{catalogExpanded=!catalogExpanded;syncCatalogView();if(catalogExpanded)document.getElementById('beats')?.scrollIntoView({behavior:'smooth',block:'start'});});
 const baseRender=render;
 render=function(){
  baseRender();
+ syncCatalogView();
  document.querySelectorAll("#catalog .beat").forEach(card=>{
   const cover=card.querySelector(".cover"),foot=card.querySelector(".beat-foot"),title=cover?.dataset.title||card.querySelector(".inquiry")?.dataset.title||card.querySelector("h3")?.textContent.trim();
   if(!title||!foot)return;
