@@ -227,10 +227,10 @@ function syncPlayerQueueControls(){
  const prev=document.getElementById("globalPrev"),next=document.getElementById("globalNext");
  const currentTitle=activeAudio&&activeAudio.dezzireTitle;
  let index=currentTitle?playerQueue.indexOf(currentTitle):-1;
- if(index<0&&currentTitle){
+ if(currentTitle){
   const visible=readCatalogQueue();
   if(visible.includes(currentTitle)){playerQueue=visible;index=playerQueue.indexOf(currentTitle)}
-  else{playerQueue=beats.map(b=>b.title);index=playerQueue.indexOf(currentTitle)}
+  else if(index<0){playerQueue=beats.map(b=>b.title);index=playerQueue.indexOf(currentTitle)}
  }
  if(prev)prev.disabled=!activeAudio||index<=0;
  if(next)next.disabled=!activeAudio||index<0||index>=playerQueue.length-1;
