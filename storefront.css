@@ -60,3 +60,25 @@ a,button{-webkit-tap-highlight-color:transparent}
 @media(max-width:1000px){#beats .beats{grid-template-columns:repeat(3,minmax(0,1fr))!important}#licenses .license-compare{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:650px){.blackout-hero-main{min-height:400px}.blackout-hero-copy{padding:38px 12px 35px 20px}.blackout-hero h1{font-size:clamp(52px,13vw,86px)}#beats .beats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}#beats .beat-body{padding:11px}#beats .beat-title h3{font-size:18px}#licenses .license-compare{grid-template-columns:repeat(2,minmax(0,1fr))!important}#licenses .license-card{min-height:290px!important;padding:16px!important}#licenses .license-card h3{font-size:19px!important}#licenses .license-price{font-size:22px!important}.contact-actions{gap:8px}}
 @media(max-width:390px){#licenses .license-compare{grid-template-columns:1fr!important}#licenses .license-card{min-height:250px!important}#beats .beats{grid-template-columns:1fr!important}}
+
+/* Keep every supporting section inside the same monochrome system. */
+.manifesto{background:#0d0d0d!important;border-color:#303030!important}
+.manifesto h2{color:#f3f3f3!important}
+.manifesto p{color:#a5a5a5!important}
+.process-card{background:#101010!important;border-color:#303030!important;color:#f1f1f1!important}
+.process-card p,.process-card-top{color:#999!important}
+.faq-list{border-color:#303030!important}
+.faq-list details{background:#0d0d0d!important;border-color:#303030!important;color:#f1f1f1!important}
+.faq-list summary{color:#f1f1f1!important}
+.faq-list details p{color:#a5a5a5!important}
+.artist-brief-form .brief-field input,
+.artist-brief-form .brief-field select,
+.artist-brief-form .brief-field textarea{
+  background:#101010!important;color:#f1f1f1!important;border-color:#383838!important;
+}
+.artist-brief-form .brief-field label,.brief-note{color:#999!important}
+.artist-brief-form .brief-actions button{border-radius:0!important}
+.artist-brief-form .brief-actions .pill{background:#eee!important;color:#080808!important;border-color:#eee!important}
+.artist-brief-form .brief-actions .pill:hover{background:#080808!important;color:#fff!important}
+.license-card small{margin-top:14px!important}
+#licenses .license-card .pill{margin-top:auto!important}
