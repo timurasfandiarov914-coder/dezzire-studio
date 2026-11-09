@@ -4,7 +4,7 @@
 const en={
 catalogToolsNote:"Find your next sound or let the catalog surprise you.",randomBeat:"RANDOM BEAT ↗",showAllLabel:"SHOW ALL ↗",backHomeLabel:"← HOME",listLayoutLabel:"☰ LIST",gridLayoutLabel:"▦ GRID",swipeHint:"SWIPE TO EXPLORE ↔",fullHint:"FULL CATALOG / FILTER & SORT",
 beatWeekTitle:"BEAT OF THE WEEK",beatWeekLabel:"WEEKLY SPOTLIGHT<br>ONE SOUND / ONE WEEK",beatBack:"← BACK TO CATALOG",
-licenseTitle:"Licenses.",licenseLabel:"COMPARE FORMATS<br>CONFIRM RIGHTS BEFORE PAYMENT",licenseMp3:"MP3 license",
+licenseTitle:"Prices &amp; licenses.",licenseLabel:"FORMATS AND SERVICES<br>MESSAGE TO ARRANGE AN ORDER",licenseMp3:"MP3 license",
 licenseMp3Copy:"Request an MP3 delivery license. Confirm the exact files, permitted uses, platforms and monetization before payment.",
 licenseMp3Note:"Rights and delivery terms are confirmed directly.",licenseWav:"WAV license",
 licenseWavCopy:"WAV is a listed request format; do not assume a master file is ready. Confirm availability, delivered format and rights before payment.",
@@ -27,7 +27,7 @@ feedbackInstagram:"SEND A RELEASE ↗",feedbackTelegram:"SEND A RELEASE ↗"
 const ru={
 catalogToolsNote:"Найди свой следующий звук или доверься случайному выбору каталога.",randomBeat:"СЛУЧАЙНЫЙ БИТ ↗",showAllLabel:"ПОКАЗАТЬ ВСЕ ↗",backHomeLabel:"← НА ГЛАВНУЮ",listLayoutLabel:"☰ СПИСОК",gridLayoutLabel:"▦ СЕТКА",swipeHint:"ЛИСТАЙ КАТАЛОГ ↔",fullHint:"ВЕСЬ КАТАЛОГ / ПОИСК И СОРТИРОВКА",
 beatWeekTitle:"БИТ НЕДЕЛИ",beatWeekLabel:"ЕЖЕНЕДЕЛЬНЫЙ ВЫБОР<br>ОДИН БИТ / ОДНА НЕДЕЛЯ",beatBack:"← НАЗАД В КАТАЛОГ",
-licenseTitle:"Лицензии.",licenseLabel:"СРАВНИ ФОРМАТЫ<br>УТОЧНИ ПРАВА ДО ОПЛАТЫ",licenseMp3:"Лицензия MP3",
+licenseTitle:"Цены и тарифы.",licenseLabel:"ФОРМАТЫ И УСЛУГИ<br>НАПИШИ ДЛЯ ОФОРМЛЕНИЯ",licenseMp3:"Лицензия MP3",
 licenseMp3Copy:"Запроси лицензию с передачей MP3. До оплаты уточни точные файлы, разрешённое использование, платформы и монетизацию.",
 licenseMp3Note:"Права и передача файлов согласуются напрямую.",licenseWav:"Лицензия WAV",
 licenseWavCopy:"WAV можно запросить, но наличие мастер-файла не гарантируется. До оплаты подтверди доступность, формат передачи и права.",
